@@ -777,36 +777,79 @@ body.dash-sidebar-open {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .soap-field-group {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .soap-field-group label {
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--dash-text);
   display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.soap-field-group label i {
+  color: var(--vet-primary);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
 }
 
 .soap-field-group textarea {
   width: 100%;
+  max-width: 100%;
   padding: 0.75rem 1rem;
   border: 1px solid var(--dash-border);
   border-radius: var(--radius-md);
   font-size: 0.875rem;
+  font-family: inherit;
+  line-height: 1.5;
   resize: vertical;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
 }
 
 .soap-field-group textarea:focus {
   outline: none;
   border-color: var(--vet-primary);
   box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
+
+.soap-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .soap-form-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+  .soap-form-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center;
+    box-sizing: border-box;
+  }
 }
 
 /* Interactive Checklist */
@@ -974,14 +1017,14 @@ body.dash-sidebar-open {
     flex-direction: column;
     align-items: stretch;
     gap: 0.75rem;
-    padding: 1rem 0.85rem;
+    padding: 1.15rem 1rem;
   }
   .dash-card-header .btn {
     width: 100%;
     justify-content: center;
   }
   .dash-card-body {
-    padding: 0.85rem 0.65rem;
+    padding: 1.15rem 1rem;
   }
   .dash-stats-grid {
     grid-template-columns: 1fr;
@@ -1011,7 +1054,9 @@ body.dash-sidebar-open {
   .soap-vitals-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
-    padding: 0.75rem;
+    padding: 0.85rem;
+    box-sizing: border-box;
+    width: 100%;
   }
   .roster-week-grid {
     grid-template-columns: 1fr;
@@ -1028,17 +1073,22 @@ body.dash-sidebar-open {
 
 @media (max-width: 480px) {
   .dash-topbar {
-    padding: 0 0.5rem;
+    padding: 0 0.75rem;
   }
   .dash-body {
-    padding: 0.75rem 0.4rem;
+    padding: 1rem 0.75rem;
     gap: 1rem;
   }
+  .dash-card-header {
+    padding: 1rem 0.85rem;
+  }
   .dash-card-body {
-    padding: 0.75rem 0.35rem;
+    padding: 1rem 0.85rem;
   }
   .soap-vitals-grid {
     grid-template-columns: 1fr;
+    padding: 0.85rem;
+    gap: 0.75rem;
   }
   .dash-welcome-card {
     padding: 1.25rem 0.85rem;
@@ -1057,12 +1107,15 @@ body.dash-sidebar-open {
 
 @media (max-width: 360px) {
   .dash-topbar {
-    padding: 0 0.35rem;
+    padding: 0 0.5rem;
   }
   .dash-body {
-    padding: 0.6rem 0.25rem;
+    padding: 0.85rem 0.5rem;
   }
   .dash-card-header {
-    padding: 0.85rem 0.5rem;
+    padding: 0.85rem 0.75rem;
+  }
+  .dash-card-body {
+    padding: 0.85rem 0.75rem;
   }
 }

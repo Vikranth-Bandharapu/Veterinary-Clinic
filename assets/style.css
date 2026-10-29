@@ -683,6 +683,9 @@ body.drawer-open {
 .hero-visual-3d {
   position: relative;
   perspective: 1200px;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block;
 }
 
 .hero-visual-frame {
@@ -693,6 +696,10 @@ body.drawer-open {
   transform-style: preserve-3d;
   transition: transform var(--transition-base);
   border: 4px solid #FFFFFF;
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  background-color: #E2E8F0;
 }
 
 .hero-visual-frame img {
@@ -700,6 +707,9 @@ body.drawer-open {
   height: 520px;
   object-fit: cover;
   transition: transform 0.6s ease;
+  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .hero-visual-frame:hover img {
@@ -720,8 +730,6 @@ body.drawer-open {
   align-items: center;
   gap: 0.85rem;
   z-index: 5;
-  transition: transform 0.3s ease;
-  animation: floatKeyframe 4s ease-in-out infinite alternate;
 }
 
 .floating-badge-top {
@@ -1817,19 +1825,34 @@ select {
 }
 
 /* ==========================================================================
-   AOS Visibility & Animation Reliability Safeguards
-   Guarantees all content across every section is ALWAYS 100% visible!
+   GSAP & Motion Layering
+   Ensures smooth hardware acceleration and zero transform locking
    ========================================================================== */
-[data-aos^=fade][data-aos^=fade],
-[data-aos^=zoom][data-aos^=zoom],
-[data-aos^=flip][data-aos^=flip],
-[data-aos] {
-  opacity: 1 !important;
-  transform: none !important;
-  visibility: visible !important;
-  transition-property: opacity, transform !important;
-  transition-duration: 0.5s !important;
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+.hero-wrapper,
+.editorial-grid,
+.vet-grid,
+.service-grid,
+.testimonial-grid,
+.journal-grid,
+.paw-card,
+.vet-card,
+.service-card,
+.cta-banner-wrap {
+  will-change: transform, opacity;
+}
+
+/* Top Scroll Progress Indicator */
+.gsap-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #1B4332, #2D6A4F, #E07A5F);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 99999;
+  pointer-events: none;
 }
 
 .editorial-content {

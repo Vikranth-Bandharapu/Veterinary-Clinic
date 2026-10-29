@@ -240,25 +240,65 @@ function initModals() {
 
 /* --------------------------------------------------------------------------
    Newsletter Subscription Handler
+   Validates email first, then redirects to 404.html on valid submission
    -------------------------------------------------------------------------- */
 function initNewsletterForm() {
   const forms = document.querySelectorAll('.newsletter-form');
   forms.forEach(form => {
+    form.setAttribute('novalidate', 'true');
+    const input = form.querySelector('input[type="email"], input');
+    const btn = form.querySelector('button');
+
+    if (btn) {
+      btn.removeAttribute('onclick');
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const input = form.querySelector('input[type="email"]');
-      if (!input || !input.value.trim() || !/^\S+@\S+\.\S+$/.test(input.value.trim())) {
-        window.showToast('Please provide a valid email address to subscribe.', 'warning', 'Invalid Email');
+
+      const emailVal = input ? input.value.trim() : '';
+
+      // 1. Validate: check if empty
+      if (!emailVal) {
+        if (input) {
+          input.classList.add('is-invalid');
+          input.focus();
+        }
+        if (typeof window.showToast === 'function') {
+          window.showToast('Please enter your email address to subscribe.', 'warning', 'Email Required');
+        }
         return;
       }
 
-      window.showToast(
-        `Thank you! "${input.value.trim()}" has been added to the PawCare Pet Journal digest (Demo).`,
-        'success',
-        'Subscribed!'
-      );
-      input.value = '';
+      // 2. Validate: check format
+      if (!/^\S+@\S+\.\S+$/.test(emailVal)) {
+        if (input) {
+          input.classList.add('is-invalid');
+          input.focus();
+        }
+        if (typeof window.showToast === 'function') {
+          window.showToast('Please enter a valid email address (e.g. name@domain.com).', 'warning', 'Invalid Email');
+        }
+        return;
+      }
+
+      // 3. Validation passed: redirect to 404.html
+      if (input) {
+        input.classList.remove('is-invalid');
+      }
+      if (typeof window.showToast === 'function') {
+        window.showToast('Email verified. Redirecting...', 'success', 'Subscribed');
+      }
+      setTimeout(() => {
+        window.location.href = '404.html';
+      }, 500);
     });
+
+    if (input) {
+      input.addEventListener('input', () => {
+        input.classList.remove('is-invalid');
+      });
+    }
   });
 }
 
@@ -324,20 +364,31 @@ function initCurrentYear() {
 
 /* --------------------------------------------------------------------------
    Failsafe Content Visibility
-   Guarantees that section content is immediately visible across all devices
+   Guarantees that section content and hero images are accessible if animation scripts stall
    -------------------------------------------------------------------------- */
 function initFailsafeVisibility() {
+  // Ensure hero visuals and images are immediately visible
+  document.querySelectorAll('.hero-visual-3d, .hero-visual-frame, .hero-visual-frame img').forEach(el => {
+    el.style.opacity = '1';
+    el.style.visibility = 'visible';
+  });
+
   if (typeof AOS !== 'undefined' && typeof window.__pawcare_aos_initialized === 'undefined') {
     try {
-      AOS.init({ once: true, duration: 600, offset: 20 });
+      AOS.init({ once: true, duration: 600, offset: 40 });
       window.__pawcare_aos_initialized = true;
     } catch (e) {}
   }
+  // Safe fallback: force-reveal after timeout if an animation engine stalled
   setTimeout(() => {
-    document.querySelectorAll('[data-aos]').forEach(el => {
+    document.querySelectorAll('[data-aos]:not(.aos-animate)').forEach(el => {
       el.classList.add('aos-animate');
       el.style.opacity = '1';
       el.style.visibility = 'visible';
     });
-  }, 300);
+    document.querySelectorAll('.hero-visual-3d, .hero-visual-frame, .hero-visual-frame img').forEach(el => {
+      el.style.opacity = '1';
+      el.style.visibility = 'visible';
+    });
+  }, 1000);
 }
