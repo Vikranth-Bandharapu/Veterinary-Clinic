@@ -79,11 +79,59 @@
     </div>
   </aside>
 
-  <main style="padding-top: calc(var(--header-height) + 2rem); padding-bottom: 5rem;">
-    <div class="container">
+  <main>
+    <!-- =========================================================================
+         SECTION 1: Appointment Hero
+         ========================================================================= -->
+    <section class="hero-wrapper" id="appointment-hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-pill">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Schedule Care • Low-Stress Appointments</span>
+          </div>
+          <h1 class="hero-title">
+            Book a calm, comprehensive visit for <em>your pet</em>.
+          </h1>
+          <p class="hero-description">
+            Whether your pet needs their annual preventive wellness exam, dental re-evaluation, or a diagnostic consultation, select your preferred date and our clinical team will arrange the ideal visit window.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#appointmentForm" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-arrow-down"></i> Jump to Inquiry Form
+            </a>
+            <a href="contact.html" class="btn btn-outline btn-lg">
+              <i class="fa-solid fa-phone"></i> Contact Front Desk
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual-3d">
+          <div class="hero-visual-frame tilt-card">
+            <img src="assets/first-visit.webp" alt="Warm veterinary clinic reception desk and client relations team" width="800" height="520">
+          </div>
+          <div class="floating-badge floating-badge-top">
+            <div class="floating-badge-icon bg-emerald"><i class="fa-solid fa-shield-dog"></i></div>
+            <div class="floating-badge-text">
+              <h6>Low-Stress Visit</h6>
+              <p>Species-Specific Handling</p>
+            </div>
+          </div>
+          <div class="floating-badge floating-badge-bottom">
+            <div class="floating-badge-icon bg-coral"><i class="fa-solid fa-clock"></i></div>
+            <div class="floating-badge-text">
+              <h6>Unhurried Exams</h6>
+              <p>Dedicated Doctor Time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="padding-top: 3.5rem; padding-bottom: 5rem;">
       <div class="section-header text-center" data-aos="fade-up">
         <div class="section-tag tag-accent">Schedule Care</div>
-        <h1 class="section-title">Appointment Inquiry</h1>
+        <h2 class="section-title">Appointment Inquiry</h2>
         <p class="section-subtitle">
           Submit your preferred date and pet care details below. Our team reviews incoming requests to ensure adequate time is scheduled for a calm, thorough consultation.
         </p>
@@ -346,6 +394,8 @@
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="assets/main.js"></script>
   <script src="assets/animations.js"></script>
   <script src="assets/validation.js"></script>

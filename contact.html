@@ -85,7 +85,7 @@
          ========================================================================= -->
     <section class="hero-wrapper" id="contact-hero">
       <div class="container hero-grid">
-        <div class="hero-content" data-aos="fade-right">
+        <div class="hero-content">
           <div class="hero-badge-pill">
             <i class="fa-solid fa-headset"></i>
             <span>Client Support & Location • Fictional Demo Clinic</span>
@@ -106,7 +106,7 @@
           </div>
         </div>
 
-        <div class="hero-visual-3d" data-aos="fade-left">
+        <div class="hero-visual-3d">
           <div class="hero-visual-frame tilt-card">
             <img src="assets/contact-clinic.webp" alt="PawCare clinic front entrance and visitor parking area" width="800" height="520">
           </div>
@@ -307,7 +307,7 @@
           </p>
         </div>
 
-        <form id="contactForm" class="form-card" novalidate data-aos="fade-up">
+        <form id="contactForm" class="form-card" action="404.html" method="GET" novalidate data-aos="fade-up">
           <div class="form-grid">
             <!-- Full Name -->
             <div class="form-group">
@@ -370,7 +370,7 @@
               <span class="form-error-msg"></span>
             </div>
 
-            <!-- Submit Button (Functional demo submission) -->
+            <!-- Submit Button (Validates then redirects to 404 page) -->
             <div class="form-group col-full">
               <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
                 <i class="fa-solid fa-paper-plane"></i> Submit Demo Inquiry
@@ -592,8 +592,8 @@
               </p>
             </div>
             <div>
-              <form class="newsletter-form" style="display: flex; flex-direction: column; gap: 0.75rem;">
-                <input type="email" placeholder="Your email address..." class="form-control" style="background: #FFFFFF;" required aria-label="Email for updates">
+              <form class="newsletter-form" action="404.html" method="GET" novalidate style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <input type="email" placeholder="Your email address..." class="form-control" style="background: #FFFFFF;" aria-label="Email for updates">
                 <button type="submit" class="btn btn-accent btn-lg">
                   <i class="fa-solid fa-envelope"></i> Subscribe for Clinic News
                 </button>
