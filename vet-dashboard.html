@@ -71,9 +71,45 @@
           <div class="sidebar-user-info">
             <div class="sidebar-user-name">Dr. Sarah Jenkins</div>
             <div class="sidebar-user-role">Lead Clinician, DVM</div>
-            <div class="sidebar-user-email" style="font-size: 0.72rem; color: rgba(255, 255, 255, 0.75); word-break: break-all; margin-top: 2px;" title="vet@pawcare-demo.org">vet@pawcare-demo.org</div>
+            <div class="sidebar-user-email" title="vet@pawcare-demo.org">vet@pawcare-demo.org</div>
           </div>
         </div>
+        <script>
+          (function() {
+            try {
+              var params = new URLSearchParams(window.location.search);
+              var email = params.get('email') || 
+                          localStorage.getItem('pawcare_logged_in_email') || 
+                          sessionStorage.getItem('pawcare_logged_in_email') || 
+                          localStorage.getItem('pawcare_registered_email');
+              if (email && email.trim()) {
+                email = email.trim();
+                localStorage.setItem('pawcare_logged_in_email', email);
+                sessionStorage.setItem('pawcare_logged_in_email', email);
+                var el = document.querySelector('.sidebar-user-email');
+                if (el) { el.textContent = email; el.title = email; }
+                var regName = localStorage.getItem('pawcare_registered_name') || sessionStorage.getItem('pawcare_registered_name');
+                var nameEl = document.querySelector('.sidebar-user-name');
+                if (regName && nameEl) {
+                  nameEl.textContent = regName;
+                  nameEl.title = regName;
+                } else if (email.indexOf('@') > 0 && nameEl) {
+                  var local = email.split('@')[0];
+                  if (local && local !== 'admin' && local !== 'vet') {
+                    var clean = local.split(/[\._\-+]+/).filter(Boolean).map(function(s){return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();}).join(' ');
+                    if (clean) {
+                      var fullName = clean.toLowerCase().startsWith('dr.') ? clean : ('Dr. ' + clean);
+                      nameEl.textContent = fullName;
+                      nameEl.title = fullName;
+                      var welcomeEl = document.querySelector('.vet-welcome-name');
+                      if (welcomeEl) welcomeEl.textContent = fullName;
+                    }
+                  }
+                }
+              }
+            } catch(e) {}
+          })();
+        </script>
         <button type="button" class="sidebar-nav-item action-logout" data-action="logout" style="color: #F87171; padding: 0.5rem 0.75rem; border-radius: 8px;">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
@@ -105,11 +141,11 @@
         </div>
 
         <div class="dash-topbar-actions">
-          <button type="button" class="topbar-icon-btn" onclick="switchDashboardTab('tab-vet-email')" aria-label="Email Inbox">
+          <button type="button" class="topbar-icon-btn" onclick="window.location.href='404.html'" aria-label="Email Inbox">
             <i class="fa-regular fa-envelope"></i>
             <span class="dot-alert"></span>
           </button>
-          <button type="button" class="topbar-icon-btn" onclick="switchDashboardTab('tab-vet-notifications')" aria-label="Alerts">
+          <button type="button" class="topbar-icon-btn" onclick="window.location.href='404.html'" aria-label="Alerts">
             <i class="fa-regular fa-bell"></i>
             <span class="dot-alert"></span>
           </button>
@@ -136,15 +172,15 @@
               <div class="dash-welcome-badge" style="background-color: rgba(20, 184, 166, 0.3);">
                 <i class="fa-solid fa-stethoscope"></i> Clinical Care Workspace (Fictional Demo Data)
               </div>
-              <h2>Welcome to clinic rounds, Dr. Jenkins!</h2>
+              <h2>Welcome to clinic rounds, <span class="vet-welcome-name">Dr. Jenkins</span>!</h2>
               <p>
                 You have 6 consultations scheduled today. Exam Room 1 is prepared for Cooper's post-op dental check, and Luna's allergy cytology results are ready for review.
               </p>
               <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
-                <button type="button" class="btn btn-white btn-sm" onclick="switchDashboardTab('tab-vet-soap')">
+                <button type="button" class="btn btn-white btn-sm" onclick="window.location.href='404.html'">
                   <i class="fa-solid fa-file-pen"></i> New SOAP Consultation Note
                 </button>
-                <button type="button" class="btn btn-outline-white btn-sm" onclick="switchDashboardTab('tab-vet-appointments')">
+                <button type="button" class="btn btn-outline-white btn-sm" onclick="window.location.href='404.html'">
                   <i class="fa-solid fa-calendar-day"></i> View My Roster
                 </button>
               </div>
@@ -156,7 +192,7 @@
 
           <!-- Section 18: Clinical Performance Overview -->
           <div class="dash-stats-grid">
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view consultations">
               <div class="dash-stat-icon" style="background-color: #CCFBF1; color: var(--vet-primary);"><i class="fa-solid fa-calendar-check"></i></div>
               <div class="dash-stat-info">
                 <h3>6</h3>
@@ -165,7 +201,7 @@
               </div>
             </div>
 
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view completed SOAP notes">
               <div class="dash-stat-icon" style="background-color: #E0F2FE; color: #0284C7;"><i class="fa-solid fa-notes-medical"></i></div>
               <div class="dash-stat-info">
                 <h3>4 / 4</h3>
@@ -174,7 +210,7 @@
               </div>
             </div>
 
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view pending lab panels">
               <div class="dash-stat-icon" style="background-color: #FEF3C7; color: #D97706;"><i class="fa-solid fa-flask-vial"></i></div>
               <div class="dash-stat-info">
                 <h3>2</h3>
@@ -183,7 +219,7 @@
               </div>
             </div>
 
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view protocol standards">
               <div class="dash-stat-icon" style="background-color: #F1F5F9; color: #475569;"><i class="fa-solid fa-shield-dog"></i></div>
               <div class="dash-stat-info">
                 <h3>100%</h3>
@@ -229,7 +265,7 @@
                     <td>Sarah Miller</td>
                     <td><span class="status-badge badge-confirmed"><i class="fa-solid fa-circle-check"></i> Confirmed</span></td>
                     <td>
-                      <button type="button" class="btn btn-outline btn-sm" onclick="switchDashboardTab('tab-vet-soap')">
+                      <button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">
                         Open SOAP
                       </button>
                     </td>
@@ -251,7 +287,7 @@
                     <td>David Thorne</td>
                     <td><span class="status-badge badge-in-progress"><i class="fa-solid fa-spinner fa-spin"></i> In Room 2</span></td>
                     <td>
-                      <button type="button" class="btn btn-outline btn-sm" onclick="switchDashboardTab('tab-vet-soap')">
+                      <button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">
                         Open SOAP
                       </button>
                     </td>
@@ -273,7 +309,7 @@
                     <td>Michael Scott</td>
                     <td><span class="status-badge badge-pending"><i class="fa-solid fa-clock"></i> Waiting Lobby</span></td>
                     <td>
-                      <button type="button" class="btn btn-outline btn-sm" onclick="switchDashboardTab('tab-vet-soap')">
+                      <button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">
                         Open SOAP
                       </button>
                     </td>
@@ -664,7 +700,7 @@
               <h3><i class="fa-solid fa-clock" style="color: var(--vet-primary);"></i> Weekly Clinical Roster (Demo)</h3>
             </div>
             <div class="dash-card-body">
-              <div class="step-journey-grid roster-week-grid">
+              <div class="card-grid roster-week-grid">
                 <div class="paw-card tilt-card" style="padding: 1.25rem; text-align: center;">
                   <strong style="color: var(--vet-primary);">Monday</strong>
                   <div style="font-size: 0.8rem; margin: 0.5rem 0;">8:00 AM – 4:00 PM</div>

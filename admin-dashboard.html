@@ -70,9 +70,39 @@
           <div class="sidebar-user-info">
             <div class="sidebar-user-name">Marcus Vance</div>
             <div class="sidebar-user-role">Operations Manager</div>
-            <div class="sidebar-user-email" style="font-size: 0.72rem; color: rgba(255, 255, 255, 0.75); word-break: break-all; margin-top: 2px;" title="admin@pawcare-demo.org">admin@pawcare-demo.org</div>
+            <div class="sidebar-user-email" title="admin@pawcare-demo.org">admin@pawcare-demo.org</div>
           </div>
         </div>
+        <script>
+          (function() {
+            try {
+              var params = new URLSearchParams(window.location.search);
+              var email = params.get('email') || 
+                          localStorage.getItem('pawcare_logged_in_email') || 
+                          sessionStorage.getItem('pawcare_logged_in_email') || 
+                          localStorage.getItem('pawcare_registered_email');
+              if (email && email.trim()) {
+                email = email.trim();
+                localStorage.setItem('pawcare_logged_in_email', email);
+                sessionStorage.setItem('pawcare_logged_in_email', email);
+                var el = document.querySelector('.sidebar-user-email');
+                if (el) { el.textContent = email; el.title = email; }
+                var regName = localStorage.getItem('pawcare_registered_name') || sessionStorage.getItem('pawcare_registered_name');
+                var nameEl = document.querySelector('.sidebar-user-name');
+                if (regName && nameEl) {
+                  nameEl.textContent = regName;
+                  nameEl.title = regName;
+                } else if (email.indexOf('@') > 0 && nameEl) {
+                  var local = email.split('@')[0];
+                  if (local && local !== 'admin' && local !== 'vet') {
+                    var clean = local.split(/[\._\-+]+/).filter(Boolean).map(function(s){return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();}).join(' ');
+                    if (clean) { nameEl.textContent = clean; nameEl.title = clean; }
+                  }
+                }
+              }
+            } catch(e) {}
+          })();
+        </script>
         <button type="button" class="sidebar-nav-item action-logout" data-action="logout" style="color: #F87171; padding: 0.5rem 0.75rem; border-radius: 8px;">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
@@ -104,11 +134,11 @@
         </div>
 
         <div class="dash-topbar-actions">
-          <button type="button" class="topbar-icon-btn" onclick="switchDashboardTab('tab-email')" aria-label="Email Inbox">
+          <button type="button" class="topbar-icon-btn" onclick="window.location.href='404.html'" aria-label="Email Inbox">
             <i class="fa-regular fa-envelope"></i>
             <span class="dot-alert"></span>
           </button>
-          <button type="button" class="topbar-icon-btn" onclick="switchDashboardTab('tab-notifications')" aria-label="Notifications Alert">
+          <button type="button" class="topbar-icon-btn" onclick="window.location.href='404.html'" aria-label="Notifications Alert">
             <i class="fa-regular fa-bell"></i>
             <span class="dot-alert"></span>
           </button>
@@ -139,10 +169,10 @@
                 Today's clinical schedule is running smoothly. 8 patients booked, 2 in recovery observation, and 4 vaccination reminders queued for dispatch.
               </p>
               <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
-                <button type="button" class="btn btn-white btn-sm" onclick="switchDashboardTab('tab-appointments')">
+                <button type="button" class="btn btn-white btn-sm" onclick="window.location.href='404.html'">
                   <i class="fa-solid fa-calendar-check"></i> Manage Today's Appointments
                 </button>
-                <button type="button" class="btn btn-outline-white btn-sm" onclick="switchDashboardTab('tab-email')">
+                <button type="button" class="btn btn-outline-white btn-sm" onclick="window.location.href='404.html'">
                   <i class="fa-solid fa-envelope"></i> Open Email Center
                 </button>
               </div>
@@ -154,7 +184,7 @@
 
           <!-- Section 2 & 3: Daily Overview & Appointment Statistics -->
           <div class="dash-stats-grid">
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view detailed statistics">
               <div class="dash-stat-icon stat-icon-emerald"><i class="fa-solid fa-calendar-check"></i></div>
               <div class="dash-stat-info">
                 <h3>24</h3>
@@ -163,7 +193,7 @@
               </div>
             </div>
 
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view today's appointments">
               <div class="dash-stat-icon stat-icon-coral"><i class="fa-solid fa-shield-dog"></i></div>
               <div class="dash-stat-info">
                 <h3>8</h3>
@@ -172,7 +202,7 @@
               </div>
             </div>
 
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view vaccine schedule">
               <div class="dash-stat-icon stat-icon-blue"><i class="fa-solid fa-syringe"></i></div>
               <div class="dash-stat-info">
                 <h3>4</h3>
@@ -181,7 +211,7 @@
               </div>
             </div>
 
-            <div class="dash-stat-card">
+            <div class="dash-stat-card" onclick="window.location.href='404.html'" role="button" tabindex="0" title="Click to view doctors roster">
               <div class="dash-stat-icon stat-icon-amber"><i class="fa-solid fa-user-doctor"></i></div>
               <div class="dash-stat-info">
                 <h3>4 / 4</h3>
@@ -352,7 +382,7 @@
                 <button type="button" class="btn btn-outline" style="justify-content: flex-start;" onclick="window.location.href='404.html'">
                   <i class="fa-solid fa-file-export"></i> Export Daily Roster (CSV)
                 </button>
-                <button type="button" class="btn btn-outline" style="justify-content: flex-start;" onclick="switchDashboardTab('tab-reminders')">
+                <button type="button" class="btn btn-outline" style="justify-content: flex-start;" onclick="window.location.href='404.html'">
                   <i class="fa-solid fa-paper-plane"></i> Broadcast Vaccine Reminders
                 </button>
 
@@ -884,7 +914,7 @@
                 </div>
               </div>
 
-              <div style="background-color: #F8FAFC; padding: 2rem; border-radius: var(--radius-md); text-align: center; border: 1px dashed var(--dash-border);">
+              <div style="background-color: #F8FAFC; padding: 2rem; border-radius: var(--radius-md); text-align: center; border: 1px solid var(--dash-border);">
                 <i class="fa-solid fa-chart-simple" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
                 <h4>Quarterly Performance & Financial Metrics Visualization</h4>
                 <p style="font-size: 0.9rem; color: var(--dash-muted); max-width: 500px; margin: 0 auto 1.5rem;">
