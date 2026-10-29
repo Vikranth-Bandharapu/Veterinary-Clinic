@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Inquiry | PawCare Veterinary Clinic</title>
+  <meta name="description" content="Request a veterinary consultation, routine wellness checkup, dental cleaning, or vaccination visit for your dog or cat at PawCare.">
+  <meta name="keywords" content="book vet appointment, veterinary checkup booking, pet doctor inquiry, PawCare appointment">
+
+  <!-- Favicon / Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/responsive.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Header & Navigation
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="PawCare Veterinary Clinic Home">
+        <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img" width="150" height="45">
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+        </a>
+        <a href="signup.html" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-user-plus"></i> Sign Up
+        </a>
+        <button type="button" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo" aria-label="PawCare Home">
+        <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img" width="135" height="40">
+      </a>
+      <button type="button" class="mobile-drawer-close" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="blog.html" class="nav-link">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="login.html" class="btn btn-outline">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+      </a>
+      <a href="signup.html" class="btn btn-primary">
+        <i class="fa-solid fa-user-plus"></i> Sign Up
+      </a>
+    </div>
+  </aside>
+
+  <main style="padding-top: calc(var(--header-height) + 2rem); padding-bottom: 5rem;">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-tag tag-accent">Schedule Care</div>
+        <h1 class="section-title">Appointment Inquiry</h1>
+        <p class="section-subtitle">
+          Submit your preferred date and pet care details below. Our team reviews incoming requests to ensure adequate time is scheduled for a calm, thorough consultation.
+        </p>
+      </div>
+
+      <!-- Trust Pillars Row -->
+      <div class="step-journey-grid responsive-3-col" style="margin-bottom: 3rem;" data-aos="fade-up">
+        <div class="paw-card tilt-card" style="padding: 1.5rem; text-align: center;">
+          <div class="paw-card-icon" style="margin: 0 auto 1rem;"><i class="fa-solid fa-shield-dog"></i></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Low-Stress Handling</h4>
+          <p style="font-size: 0.85rem; margin: 0;">Unhurried appointments with species-specific care.</p>
+        </div>
+        <div class="paw-card tilt-card" style="padding: 1.5rem; text-align: center;">
+          <div class="paw-card-icon" style="margin: 0 auto 1rem;"><i class="fa-solid fa-receipt"></i></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Upfront Pricing</h4>
+          <p style="font-size: 0.85rem; margin: 0;">Clear estimates before any treatment or diagnostic test.</p>
+        </div>
+        <div class="paw-card tilt-card" style="padding: 1.5rem; text-align: center;">
+          <div class="paw-card-icon" style="margin: 0 auto 1rem;"><i class="fa-solid fa-phone-volume"></i></div>
+          <h4 style="font-size: 1.1rem; margin-bottom: 0.25rem;">Post-Visit Follow-Up</h4>
+          <p style="font-size: 0.85rem; margin: 0;">Nurse check-ins to support your pet's recovery at home.</p>
+        </div>
+      </div>
+
+      <!-- Form Container -->
+      <div class="form-card" style="max-width: 860px; margin: 0 auto;" data-aos="fade-up">
+        <!-- Mandatory Booking Notice -->
+        <div class="form-disclaimer" style="margin-bottom: 2rem;">
+          <i class="fa-solid fa-circle-info"></i>
+          <strong>Important Scheduling Notice:</strong> This submission is an inquiry request and does not constitute a finalized medical booking until clinic staff reviews scheduling availability and confirms your reservation by phone or email. This is a demonstration website.
+        </div>
+
+        <form id="appointmentForm" novalidate>
+          <div class="form-grid">
+            <!-- Owner Name -->
+            <div class="form-group">
+              <label for="ownerName" class="form-label">Owner Full Name <span class="req">*</span></label>
+              <input type="text" id="ownerName" name="ownerName" class="form-control" placeholder="Jane Doe" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="appEmail" class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="appEmail" name="email" class="form-control" placeholder="jane@example.com" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="appPhone" class="form-label">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="appPhone" name="phone" class="form-control" placeholder="+1 (555) 019-2834" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Pet Name -->
+            <div class="form-group">
+              <label for="appPetName" class="form-label">Pet Name <span class="req">*</span></label>
+              <input type="text" id="appPetName" name="petName" class="form-control" placeholder="Cooper" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Pet Type -->
+            <div class="form-group">
+              <label for="appPetType" class="form-label">Pet Species <span class="req">*</span></label>
+              <select id="appPetType" name="petType" class="form-control" required>
+                <option value="">Select Species...</option>
+                <option value="canine">Canine (Dog)</option>
+                <option value="feline">Feline (Cat)</option>
+                <option value="other">Small Companion Animal</option>
+              </select>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Pet Age -->
+            <div class="form-group">
+              <label for="petAge" class="form-label">Pet Age <span class="req">*</span></label>
+              <input type="text" id="petAge" name="petAge" class="form-control" placeholder="e.g. 3 years, 8 months" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Requested Service -->
+            <div class="form-group col-full">
+              <label for="requestedService" class="form-label">Primary Service Requested <span class="req">*</span></label>
+              <select id="requestedService" name="requestedService" class="form-control" required>
+                <option value="">Select Primary Service...</option>
+                <option value="wellness">Routine Wellness / Annual Physical Exam</option>
+                <option value="vaccine">Vaccination Booster & Parasite Check</option>
+                <option value="dental">Dental Prophylaxis / Oral Assessment</option>
+                <option value="illness">Sick Pet / Medical Consultation</option>
+                <option value="surgery">Surgical Consultation (Spay/Neuter/Mass)</option>
+                <option value="senior">Senior Geriatric Health Screening</option>
+                <option value="grooming">Therapeutic Grooming / Hygiene Bath</option>
+                <option value="other">Other Service Inquiry</option>
+              </select>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Preferred Date -->
+            <div class="form-group">
+              <label for="preferredDate" class="form-label">Preferred Date <span class="req">*</span></label>
+              <input type="date" id="preferredDate" name="preferredDate" class="form-control" required>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Preferred Time -->
+            <div class="form-group">
+              <label for="preferredTime" class="form-label">Preferred Time Window <span class="req">*</span></label>
+              <select id="preferredTime" name="preferredTime" class="form-control" required>
+                <option value="">Choose Time Window...</option>
+                <option value="morning">Morning (8:30 AM – 11:30 AM)</option>
+                <option value="midday">Midday (11:30 AM – 2:30 PM)</option>
+                <option value="afternoon">Afternoon (2:30 PM – 5:30 PM)</option>
+                <option value="evening">Evening (5:30 PM – 7:00 PM)</option>
+              </select>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Additional Notes -->
+            <div class="form-group col-full">
+              <label for="additionalNotes" class="form-label">Additional Notes or Symptoms (Optional)</label>
+              <textarea id="additionalNotes" name="additionalNotes" rows="4" class="form-control" placeholder="Share any relevant history, behavioral quirks (e.g. nervous around other dogs), or specific symptoms you have observed."></textarea>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <!-- Submit Button (Working exception to normal 404 rule) -->
+            <div class="form-group col-full">
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <i class="fa-solid fa-calendar-check"></i> Submit Appointment Inquiry (Demo)
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Interactive Modal for Demo Booking Confirmation -->
+  <div id="appointmentSuccessModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-modal-close aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background-color: var(--color-primary-soft); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 1rem;">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 id="modalTitle" style="font-size: 1.6rem; color: var(--color-primary-dark); margin-bottom: 0.5rem;">Inquiry Recorded!</h3>
+        <p style="font-size: 0.95rem; color: var(--text-muted);">
+          Your appointment request has been simulated in demo mode.
+        </p>
+      </div>
+
+      <div style="background-color: var(--bg-secondary); padding: 1.25rem 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; font-size: 0.875rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-light);">Reference Code:</span>
+          <strong id="modalRefCode" style="color: var(--color-primary); font-family: monospace; font-size: 1rem;">PAW-2026-0000</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-light);">Patient:</span>
+          <strong id="modalPetSummary">Pet Summary</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-light);">Requested Window:</span>
+          <strong id="modalDateSummary">Date Window</strong>
+        </div>
+      </div>
+
+      <div class="form-disclaimer" style="margin-bottom: 1.5rem;">
+        <i class="fa-solid fa-shield-halved"></i>
+        <strong>Demo Reminder:</strong> PawCare Veterinary Clinic is a conceptual demonstration website. No actual booking has occurred and no medical staff has received this request.
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 1rem;">
+        <button type="button" class="btn btn-primary" data-modal-close>
+          <i class="fa-solid fa-check"></i> Understood
+        </button>
+        <a href="404.html" class="btn btn-outline">
+          <i class="fa-solid fa-house"></i> Return Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-disclaimer-card" role="note">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <strong>Fictional Demonstration Website:</strong>
+          <p>
+            PawCare Veterinary Clinic is a conceptual demonstration brand. All clinician profiles, medical advice, pricing, service packages, and contact information are for illustrative purposes only. For actual pet health emergencies, contact a local licensed 24/7 veterinary hospital immediately.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo footer-brand-link" aria-label="PawCare Veterinary Clinic Home" style="margin-bottom: 1.25rem; display: inline-block;">
+            <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img brand-logo-footer" width="150" height="45">
+          </a>
+          <p>Compassionate veterinary medicine, preventive health examinations, and lifelong wellness for dogs and cats.</p>
+          <div class="footer-social-links">
+            <a href="404.html" class="footer-social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="footer-social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="footer-social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links-list">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Portal Access</div>
+          <ul class="footer-links-list">
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Staff Login</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Staff Sign Up</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Admin Dashboard</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Vet Workspace</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Client Portal (404)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Clinic Hours (Demo)</div>
+          <div class="footer-hours-box">
+            <div class="footer-hours-row"><span>Mon – Fri:</span><strong>8:00 AM – 7:00 PM</strong></div>
+            <div class="footer-hours-row"><span>Saturday:</span><strong>9:00 AM – 4:00 PM</strong></div>
+            <div class="footer-hours-row"><span>Sunday:</span><strong>Emergency / Closed</strong></div>
+          </div>
+          <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-white-muted);">
+            <a href="https://maps.google.com/?q=Stackly,+Tamil+Nadu" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;" title="View Stackly, Tamil Nadu on Google Maps">
+              <i class="fa-solid fa-location-dot" style="color: var(--color-accent);"></i> Stackly, Tamil Nadu
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span class="current-year">2026</span> Stackly Veterinary Clinic. All rights reserved. Demo Project.</div>
+        <div>
+          <a href="404.html" style="margin-right: 1.5rem;">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/animations.js"></script>
+  <script src="assets/validation.js"></script>
+</body>
+</html>

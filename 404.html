@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found (404) | PawCare Veterinary Clinic</title>
+  <meta name="description" content="Oops! This page has wandered off the trail. Return to PawCare Veterinary Clinic home or go back to your previous page.">
+  <meta name="keywords" content="PawCare, 404, veterinary clinic, page not found">
+
+  <!-- Favicon / Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/responsive.css">
+
+  <style>
+    .page-404-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: clamp(2rem, 6vw, 4rem) clamp(0.75rem, 4vw, 1.5rem);
+      background: radial-gradient(circle at 50% 30%, rgba(216, 243, 220, 0.4) 0%, transparent 65%),
+                  radial-gradient(circle at 80% 80%, rgba(224, 122, 95, 0.1) 0%, transparent 50%),
+                  var(--bg-primary);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .paw-print-bg {
+      position: absolute;
+      font-size: 8rem;
+      color: rgba(27, 67, 50, 0.04);
+      pointer-events: none;
+    }
+
+    .paw-1 { top: 12%; left: 8%; transform: rotate(-25deg); }
+    .paw-2 { bottom: 15%; right: 10%; transform: rotate(35deg); }
+    .paw-3 { top: 60%; left: 12%; transform: rotate(15deg); }
+
+    .visual-404-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 5vw, 3rem);
+      max-width: 680px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 480px) {
+      .page-404-wrap {
+        padding: 1.5rem 0.75rem;
+      }
+      .visual-404-card {
+        padding: 1.5rem 1rem;
+        border-radius: var(--radius-lg);
+      }
+    }
+
+    .badge-404 {
+      font-family: var(--font-heading);
+      font-size: clamp(5rem, 12vw, 7.5rem);
+      line-height: 1;
+      font-weight: 700;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge-404 i {
+      color: var(--color-accent);
+      animation: wagTail 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes wagTail {
+      0% { transform: rotate(-10deg) scale(0.95); }
+      100% { transform: rotate(12deg) scale(1.05); }
+    }
+
+    .error-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-primary-dark);
+    }
+
+    .error-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 2.25rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .error-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Paw Decorative Elements -->
+  <div class="paw-print-bg paw-1" aria-hidden="true"><i class="fa-solid fa-paw"></i></div>
+  <div class="paw-print-bg paw-2" aria-hidden="true"><i class="fa-solid fa-paw"></i></div>
+  <div class="paw-print-bg paw-3" aria-hidden="true"><i class="fa-solid fa-paw"></i></div>
+
+  <main class="page-404-wrap">
+    <div style="text-align: center; margin-bottom: 1.5rem; position: relative; z-index: 2;">
+      <a href="index.html" class="brand-logo" aria-label="PawCare Home" style="display: inline-flex; justify-content: center;">
+        <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img" width="150" height="45">
+      </a>
+    </div>
+
+    <div class="visual-404-card" data-aos="zoom-in">
+      <div class="badge-404">
+        <span>4</span>
+        <i class="fa-solid fa-paw"></i>
+        <span>4</span>
+      </div>
+
+      <h1 class="error-title">Looks Like This Page Wandered Off!</h1>
+      <p class="error-text">
+        Our clinic hounds sniffed everywhere, but this destination seems to have chased a squirrel or hasn't been built yet in this demo. Let's guide you back to safety.
+      </p>
+
+      <div class="error-btn-group">
+        <!-- Recovery buttons: Explicit exceptions to the normal CTA rule -->
+        <a href="index.html" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-house"></i> Back to Home
+        </a>
+        <button type="button" onclick="history.back()" class="btn btn-outline btn-lg">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/animations.js"></script>
+</body>
+</html>

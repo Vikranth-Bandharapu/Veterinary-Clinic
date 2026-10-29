@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Sign Up | PawCare Veterinary Clinic</title>
+  <meta name="description" content="Create a demonstration staff account for PawCare Veterinary Clinic. Select Clinic Admin or Veterinarian role.">
+  <meta name="keywords" content="PawCare staff signup, clinic registration, veterinarian portal signup">
+
+  <!-- Favicon / Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/responsive.css">
+
+  <style>
+    .auth-page-wrap {
+      min-height: 100vh;
+      padding: clamp(1.5rem, 5vw, 3rem) clamp(0.75rem, 4vw, 1.5rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 10% 20%, rgba(216, 243, 220, 0.45) 0%, transparent 60%),
+                  radial-gradient(circle at 90% 80%, rgba(224, 122, 95, 0.1) 0%, transparent 50%),
+                  var(--bg-primary);
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    .auth-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-xl);
+      padding: clamp(1.25rem, 5vw, 3rem);
+      max-width: 620px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--border-subtle);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .pwd-requirements-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.4rem;
+      font-size: 0.775rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+    }
+
+    @media (max-width: 480px) {
+      .auth-page-wrap {
+        padding: 1.5rem 0.75rem;
+      }
+      .auth-card {
+        padding: 1.5rem 1rem;
+        border-radius: var(--radius-lg);
+      }
+    }
+
+    @media (max-width: 360px) {
+      .auth-page-wrap {
+        padding: 1rem 0.5rem;
+      }
+      .auth-card {
+        padding: 1.25rem 0.75rem;
+        border-radius: var(--radius-md);
+      }
+    }
+
+    .pwd-req-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pwd-req-item.met {
+      color: var(--color-success);
+      font-weight: 600;
+    }
+
+    .pwd-req-item.met i {
+      color: var(--color-success);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="auth-page-wrap">
+    <!-- Brand Mark for Standalone Auth View -->
+    <div style="text-align: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="PawCare Veterinary Clinic Home" style="display: inline-flex; align-items: center; justify-content: center;">
+        <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img" width="160" height="48">
+      </a>
+    </div>
+
+    <div class="auth-card" data-aos="zoom-in">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div class="section-tag tag-accent">Staff Onboarding</div>
+        <h1 style="font-size: 2rem; color: var(--color-primary-dark); margin-bottom: 0.5rem;">Create Staff Account</h1>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin: 0;">
+          Register for the demonstration clinical management or administrative portal.
+        </p>
+      </div>
+
+      <!-- Security Notice & Quick Auto-Fill Demo -->
+      <div class="form-disclaimer" style="margin-bottom: 1.75rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+        <div style="flex: 1; min-width: 220px;">
+          <i class="fa-solid fa-shield-halved"></i>
+          <strong>Demo Registration:</strong> Frontend demo. Enter details below; upon successful validation, you will be redirected to the Staff Login portal.
+        </div>
+        <button type="button" id="btnAutoFillSignup" class="btn btn-outline btn-sm" style="font-size: 0.78rem; padding: 0.35rem 0.75rem; white-space: nowrap;">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Fill Demo
+        </button>
+      </div>
+
+      <form id="signupForm" action="login.html" novalidate>
+        <div class="form-grid">
+          <!-- Full Name -->
+          <div class="form-group col-full">
+            <label for="signupName" class="form-label">Full Legal Name <span class="req">*</span></label>
+            <input type="text" id="signupName" class="form-control" placeholder="Dr. Sarah Jenkins" required>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="signupEmail" class="form-label">Work Email <span class="req">*</span></label>
+            <input type="email" id="signupEmail" class="form-control" placeholder="s.jenkins@pawcare-demo.org" required>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="signupPhone" class="form-label">Contact Phone <span class="req">*</span></label>
+            <input type="tel" id="signupPhone" class="form-control" placeholder="+1 (555) 019-2834" required>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Role Selection (Exactly two roles) -->
+          <div class="form-group col-full">
+            <label for="signupRole" class="form-label">Authorized Role <span class="req">*</span></label>
+            <select id="signupRole" class="form-control" required style="max-width: 100%; text-overflow: ellipsis;">
+              <option value="">Select Authorized Staff Role...</option>
+              <option value="admin">Clinic Admin (Operations, Scheduling, Invoicing, Staffing)</option>
+              <option value="vet">Veterinarian (Clinical Workspace, SOAP Notes, Prescriptions)</option>
+            </select>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group col-full">
+            <label for="signupPassword" class="form-label">Password <span class="req">*</span></label>
+            <input type="password" id="signupPassword" class="form-control" placeholder="At least 8 characters..." required>
+            <span class="form-error-msg"></span>
+
+            <!-- Realtime Checklist -->
+            <div class="pwd-requirements-list">
+              <div id="rule-length" class="pwd-req-item"><i class="fa-solid fa-circle-dot"></i> 8+ characters</div>
+              <div id="rule-upper" class="pwd-req-item"><i class="fa-solid fa-circle-dot"></i> Uppercase letter</div>
+              <div id="rule-lower" class="pwd-req-item"><i class="fa-solid fa-circle-dot"></i> Lowercase letter</div>
+              <div id="rule-num" class="pwd-req-item"><i class="fa-solid fa-circle-dot"></i> Number (0-9)</div>
+              <div id="rule-special" class="pwd-req-item"><i class="fa-solid fa-circle-dot"></i> Special symbol (!@#$)</div>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group col-full">
+            <label for="signupConfirmPassword" class="form-label">Confirm Password <span class="req">*</span></label>
+            <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Re-enter password to verify" required>
+            <span class="form-error-msg"></span>
+          </div>
+
+          <!-- Submit Button (Working exception to normal 404 rule) -->
+          <div class="form-group col-full" style="margin-top: 0.5rem;">
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <i class="fa-solid fa-user-plus"></i> Complete Demo Registration
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.75rem; font-size: 0.9rem; color: var(--text-muted);">
+        Already registered? <a href="login.html" style="color: var(--color-primary); font-weight: 700;">Log In to Staff Portal</a>
+      </div>
+    </div>
+
+    <!-- Return to Main Website Link -->
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="index.html" style="font-size: 0.875rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 500;">
+        <i class="fa-solid fa-arrow-left"></i> Return to PawCare Home
+      </a>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/animations.js"></script>
+  <script src="assets/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic Operations Dashboard | PawCare Veterinary Clinic</title>
+  <meta name="description" content="PawCare Clinic Operations Dashboard. Manage appointments, patient records, owner contacts, staff scheduling, vaccination reminders, and clinic analytics.">
+
+  <!-- Favicon / Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Dashboard Stylesheet -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <link rel="stylesheet" href="assets/responsive.css">
+</head>
+<body class="theme-admin">
+
+  <div class="dashboard-app">
+    <!-- =========================================================================
+         ADMIN SIDEBAR
+         All 14 items implemented: Dashboard, Appointments, Pet Patients,
+         Pet Owners, Veterinarians, Services, Visit Records, Vaccination Reminders,
+         Reports, Messages, Email Center, Notifications, Settings, Logout
+         ========================================================================= -->
+    <aside class="dash-sidebar" aria-label="Clinic Operations Navigation">
+      <div class="sidebar-header">
+        <a href="admin-dashboard.html" class="sidebar-brand" aria-label="PawCare Admin Dashboard">
+          <img src="assets/logo.webp" alt="PawCare Clinic" class="sidebar-logo-img" width="130" height="38">
+        </a>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-left: auto;">
+          <span class="sidebar-role-badge">Admin</span>
+          <button type="button" class="dash-sidebar-close" aria-label="Close Sidebar Navigation">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section-title">Navigation</div>
+        <button type="button" class="sidebar-nav-item active" data-tab="tab-dashboard">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Dashboard</span>
+        </button>
+        <button type="button" class="sidebar-nav-item" data-tab="tab-appointments">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Appointments</span>
+          <span class="badge-pill">8 Today</span>
+        </button>
+        <button type="button" class="sidebar-nav-item" data-tab="tab-patients">
+          <i class="fa-solid fa-dog"></i>
+          <span>Pet Patients</span>
+        </button>
+        <button type="button" class="sidebar-nav-item" data-tab="tab-records">
+          <i class="fa-solid fa-file-waveform"></i>
+          <span>Visit Records</span>
+        </button>
+        <button type="button" class="sidebar-nav-item" data-tab="tab-settings">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user-card" style="margin-bottom: 0.75rem;">
+          <img src="assets/dash-user-admin.webp" alt="Administrator profile avatar" class="sidebar-avatar" width="40" height="40">
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name">Marcus Vance</div>
+            <div class="sidebar-user-role">Operations Manager</div>
+            <div class="sidebar-user-email" style="font-size: 0.72rem; color: rgba(255, 255, 255, 0.75); word-break: break-all; margin-top: 2px;" title="admin@pawcare-demo.org">admin@pawcare-demo.org</div>
+          </div>
+        </div>
+        <button type="button" class="sidebar-nav-item action-logout" data-action="logout" style="color: #F87171; padding: 0.5rem 0.75rem; border-radius: 8px;">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="dash-sidebar-backdrop" id="dashSidebarBackdrop"></div>
+
+    <!-- =========================================================================
+         MAIN OPERATIONS CONTENT
+         ========================================================================= -->
+    <main class="dash-main">
+      <!-- Topbar -->
+      <header class="dash-topbar">
+        <div style="display: flex; align-items: center; min-width: 0; overflow: hidden;">
+          <button type="button" class="dash-sidebar-toggle" aria-label="Toggle Sidebar Navigation">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div style="font-size: 0.95rem; font-weight: 700; color: var(--color-primary-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            <span class="dash-breadcrumb-prefix">Operations Portal &gt; </span><span class="dash-breadcrumb-current" style="color: var(--color-accent); font-weight: 600;">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="dash-search-box">
+          <i class="fa-solid fa-magnifying-glass" style="color: var(--dash-muted);"></i>
+          <input type="text" id="dashGlobalSearch" placeholder="Search appointments, pets, owners..." aria-label="Global search">
+        </div>
+
+        <div class="dash-topbar-actions">
+          <button type="button" class="topbar-icon-btn" onclick="switchDashboardTab('tab-email')" aria-label="Email Inbox">
+            <i class="fa-regular fa-envelope"></i>
+            <span class="dot-alert"></span>
+          </button>
+          <button type="button" class="topbar-icon-btn" onclick="switchDashboardTab('tab-notifications')" aria-label="Notifications Alert">
+            <i class="fa-regular fa-bell"></i>
+            <span class="dot-alert"></span>
+          </button>
+          <a href="index.html" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Public Site
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard View Panels -->
+      <div class="dash-body">
+
+        <!-- =====================================================================
+             PANEL 1: DASHBOARD (Home View)
+             Sections: 1. Welcome panel, 2. Daily overview, 3. Appointment statistics,
+             4. Upcoming appointments, 5. Appointment status, 12. Clinic activity timeline,
+             16. Quick actions, 17. Clinic schedule
+             ===================================================================== -->
+        <section id="tab-dashboard" class="dash-view-panel active">
+          <!-- Section 1: Welcome Panel -->
+          <div class="dash-welcome-card">
+            <div>
+              <div class="dash-welcome-badge">
+                <i class="fa-solid fa-hospital"></i> PawCare Operations Console (Fictional Demo)
+              </div>
+              <h2>Good morning, Operations Team!</h2>
+              <p>
+                Today's clinical schedule is running smoothly. 8 patients booked, 2 in recovery observation, and 4 vaccination reminders queued for dispatch.
+              </p>
+              <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
+                <button type="button" class="btn btn-white btn-sm" onclick="switchDashboardTab('tab-appointments')">
+                  <i class="fa-solid fa-calendar-check"></i> Manage Today's Appointments
+                </button>
+                <button type="button" class="btn btn-outline-white btn-sm" onclick="switchDashboardTab('tab-email')">
+                  <i class="fa-solid fa-envelope"></i> Open Email Center
+                </button>
+              </div>
+            </div>
+            <div style="font-size: 5.5rem; opacity: 0.15; padding-right: 1.5rem; display: none;" class="d-lg-block">
+              <i class="fa-solid fa-notes-medical"></i>
+            </div>
+          </div>
+
+          <!-- Section 2 & 3: Daily Overview & Appointment Statistics -->
+          <div class="dash-stats-grid">
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon stat-icon-emerald"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="dash-stat-info">
+                <h3>24</h3>
+                <p>Scheduled This Week</p>
+                <span class="stat-trend trend-up"><i class="fa-solid fa-arrow-trend-up"></i> +12% vs last week</span>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon stat-icon-coral"><i class="fa-solid fa-shield-dog"></i></div>
+              <div class="dash-stat-info">
+                <h3>8</h3>
+                <p>Appointments Today</p>
+                <span class="stat-trend trend-up"><i class="fa-solid fa-circle-check"></i> 3 Confirmed, 1 In Progress</span>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon stat-icon-blue"><i class="fa-solid fa-syringe"></i></div>
+              <div class="dash-stat-info">
+                <h3>4</h3>
+                <p>Vaccines Due Today</p>
+                <span class="stat-trend"><i class="fa-solid fa-bell"></i> Reminders sent</span>
+              </div>
+            </div>
+
+            <div class="dash-stat-card">
+              <div class="dash-stat-icon stat-icon-amber"><i class="fa-solid fa-user-doctor"></i></div>
+              <div class="dash-stat-info">
+                <h3>4 / 4</h3>
+                <p>Doctors On Duty</p>
+                <span class="stat-trend trend-up"><i class="fa-solid fa-check"></i> Full clinical capacity</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sections 4, 5 & 16: Upcoming Appointments & Interactive Status -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-calendar-day" style="color: var(--color-primary);"></i> Today's Appointment Schedule & Status</h3>
+              <div style="display: flex; gap: 0.5rem;">
+                <button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">
+                  <i class="fa-solid fa-rotate-right"></i> Refresh
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Patient (Pet)</th>
+                    <th>Owner (Guardian)</th>
+                    <th>Service</th>
+                    <th>Veterinarian</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="inspect-patient" data-pet-name="Cooper" data-pet-species="Golden Retriever" data-pet-age="3 Years" data-pet-owner="Sarah Miller">
+                    <td><strong>09:00 AM</strong></td>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-cooper.webp" alt="Cooper" class="patient-avatar" width="38" height="38">
+                        <div>
+                          <strong class="patient-name">Cooper</strong>
+                          <div style="font-size: 0.75rem; color: var(--dash-muted);">Golden Retriever (3y)</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Sarah Miller</td>
+                    <td>Post-Op Dental Check</td>
+                    <td>Dr. Sarah Jenkins</td>
+                    <td><span class="status-badge badge-confirmed"><i class="fa-solid fa-circle-check"></i> Confirmed</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">
+                        Toggle Status
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr class="inspect-patient" data-pet-name="Luna" data-pet-species="Domestic Shorthair Cat" data-pet-age="2 Years" data-pet-owner="David Thorne">
+                    <td><strong>10:30 AM</strong></td>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-luna.webp" alt="Luna" class="patient-avatar" width="38" height="38">
+                        <div>
+                          <strong class="patient-name">Luna</strong>
+                          <div style="font-size: 0.75rem; color: var(--dash-muted);">Domestic Shorthair (2y)</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>David Thorne</td>
+                    <td>FVRCP Core Booster</td>
+                    <td>Dr. Elena Rostova</td>
+                    <td><span class="status-badge badge-in-progress"><i class="fa-solid fa-spinner fa-spin"></i> In Progress</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">
+                        Toggle Status
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr class="inspect-patient" data-pet-name="Bella" data-pet-species="French Bulldog" data-pet-age="4 Years" data-pet-owner="Michael Scott">
+                    <td><strong>11:45 AM</strong></td>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-bella.webp" alt="Bella" class="patient-avatar" width="38" height="38">
+                        <div>
+                          <strong class="patient-name">Bella</strong>
+                          <div style="font-size: 0.75rem; color: var(--dash-muted);">French Bulldog (4y)</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Michael Scott</td>
+                    <td>Allergy Dermatology Exam</td>
+                    <td>Dr. Elena Rostova</td>
+                    <td><span class="status-badge badge-pending"><i class="fa-solid fa-clock"></i> Pending Check-In</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">
+                        Toggle Status
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr class="inspect-patient" data-pet-name="Oliver" data-pet-species="Tabby Cat" data-pet-age="7 Years" data-pet-owner="Emma Watson">
+                    <td><strong>02:00 PM</strong></td>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-oliver.webp" alt="Oliver" class="patient-avatar" width="38" height="38">
+                        <div>
+                          <strong class="patient-name">Oliver</strong>
+                          <div style="font-size: 0.75rem; color: var(--dash-muted);">Tabby Cat (7y)</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Emma Watson</td>
+                    <td>Senior Renal Bloodwork</td>
+                    <td>Dr. Marcus Chen</td>
+                    <td><span class="status-badge badge-confirmed"><i class="fa-solid fa-circle-check"></i> Confirmed</span></td>
+                    <td>
+                      <button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">
+                        Toggle Status
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 12 & 17: Clinic Activity Timeline & Clinic Schedule -->
+          <div class="dash-columns-grid">
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <h3><i class="fa-solid fa-clock-rotate-left" style="color: var(--color-primary);"></i> Clinic Activity Timeline</h3>
+              </div>
+              <div class="dash-card-body">
+                <div class="task-checklist">
+                  <div class="task-item">
+                    <i class="fa-solid fa-syringe" style="color: var(--color-primary);"></i>
+                    <div>
+                      <strong>Vaccine Batch Logged:</strong> Lot #48102 DHPP vials verified in refrigerator 2.
+                      <div style="font-size: 0.75rem; color: var(--dash-muted);">8:15 AM by Nurse Claire</div>
+                    </div>
+                  </div>
+                  <div class="task-item">
+                    <i class="fa-solid fa-paw" style="color: var(--color-accent);"></i>
+                    <div>
+                      <strong>Patient Check-In:</strong> Cooper arrived for post-op dental check.
+                      <div style="font-size: 0.75rem; color: var(--dash-muted);">8:55 AM at Front Desk</div>
+                    </div>
+                  </div>
+                  <div class="task-item">
+                    <i class="fa-solid fa-file-invoice" style="color: #0284C7;"></i>
+                    <div>
+                      <strong>Digital Claim Dispatched:</strong> Bella's allergy cytology claim sent to Trupanion demo.
+                      <div style="font-size: 0.75rem; color: var(--dash-muted);">9:30 AM by Operations Desk</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 16 & 18: Quick Actions & System Status -->
+            <div class="dash-card">
+              <div class="dash-card-header">
+                <h3><i class="fa-solid fa-bolt" style="color: var(--color-accent);"></i> Quick Actions & Status</h3>
+              </div>
+              <div class="dash-card-body" style="display: flex; flex-direction: column; gap: 1rem;">
+                <button type="button" class="btn btn-primary" style="justify-content: flex-start;" onclick="window.location.href='404.html'">
+                  <i class="fa-solid fa-user-plus"></i> New Patient Intake (Demo)
+                </button>
+                <button type="button" class="btn btn-outline" style="justify-content: flex-start;" onclick="window.location.href='404.html'">
+                  <i class="fa-solid fa-file-export"></i> Export Daily Roster (CSV)
+                </button>
+                <button type="button" class="btn btn-outline" style="justify-content: flex-start;" onclick="switchDashboardTab('tab-reminders')">
+                  <i class="fa-solid fa-paper-plane"></i> Broadcast Vaccine Reminders
+                </button>
+
+                <div style="padding: 1rem; background-color: #F8FAFC; border-radius: var(--radius-md); border: 1px solid var(--dash-border); margin-top: 0.5rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.25rem;">
+                    <strong>Electronic Health Record (EHR):</strong>
+                    <span style="color: var(--color-success); font-weight: 700;">● Online (Demo)</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.25rem;">
+                    <strong>In-House Lab Analyzer:</strong>
+                    <span style="color: var(--color-success); font-weight: 700;">● Calibrated</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                    <strong>Database Synchronization:</strong>
+                    <span style="color: var(--dash-muted);">Mock In-Memory Store</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 2: APPOINTMENTS (Section 4 & 5)
+             ===================================================================== -->
+        <section id="tab-appointments" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-calendar-check" style="color: var(--color-primary);"></i> Comprehensive Appointment Pipeline</h3>
+              <div style="display: flex; gap: 0.75rem;">
+                <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">
+                  <i class="fa-solid fa-plus"></i> Add Appointment
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Ref Code</th>
+                    <th>Date & Time</th>
+                    <th>Patient</th>
+                    <th>Guardian</th>
+                    <th>Doctor</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>PAW-48210</strong></td>
+                    <td>Oct 22 • 09:00 AM</td>
+                    <td>Cooper (Golden Retriever)</td>
+                    <td>Sarah Miller</td>
+                    <td>Dr. Sarah Jenkins</td>
+                    <td>Dental Check</td>
+                    <td><span class="status-badge badge-confirmed">Confirmed</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">Update</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>PAW-48211</strong></td>
+                    <td>Oct 22 • 10:30 AM</td>
+                    <td>Luna (Shorthair)</td>
+                    <td>David Thorne</td>
+                    <td>Dr. Elena Rostova</td>
+                    <td>Vaccine Series</td>
+                    <td><span class="status-badge badge-in-progress">In Progress</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">Update</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>PAW-48212</strong></td>
+                    <td>Oct 22 • 11:45 AM</td>
+                    <td>Bella (Bulldog)</td>
+                    <td>Michael Scott</td>
+                    <td>Dr. Elena Rostova</td>
+                    <td>Skin Cytology</td>
+                    <td><span class="status-badge badge-pending">Pending</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">Update</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>PAW-48213</strong></td>
+                    <td>Oct 22 • 02:00 PM</td>
+                    <td>Oliver (Tabby)</td>
+                    <td>Emma Watson</td>
+                    <td>Dr. Marcus Chen</td>
+                    <td>Renal Screening</td>
+                    <td><span class="status-badge badge-confirmed">Confirmed</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">Update</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>PAW-48214</strong></td>
+                    <td>Oct 22 • 03:30 PM</td>
+                    <td>Buster (Rescue Mix)</td>
+                    <td>David Thorne</td>
+                    <td>Dr. Michael Vance</td>
+                    <td>Limping Check</td>
+                    <td><span class="status-badge badge-pending">Pending</span></td>
+                    <td><button type="button" class="btn btn-outline btn-sm btn-change-status" onclick="window.location.href='404.html'">Update</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 3: PET PATIENTS (Section 6)
+             ===================================================================== -->
+        <section id="tab-patients" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-dog" style="color: var(--color-primary);"></i> Pet Patients Registry</h3>
+              <span style="font-size: 0.85rem; color: var(--dash-muted);">Click any row to inspect clinical record (Demo)</span>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Patient</th>
+                    <th>Species & Breed</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Microchip ID</th>
+                    <th>Guardian</th>
+                    <th>Last Exam</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="inspect-patient" data-pet-name="Charlie" data-pet-species="Canine (Golden Retriever)" data-pet-age="3 Years" data-pet-owner="Sarah Miller" style="cursor: pointer;">
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-charlie.webp" alt="Charlie" class="patient-avatar" width="38" height="38">
+                        <strong>Charlie</strong>
+                      </div>
+                    </td>
+                    <td>Canine • Golden Retriever</td>
+                    <td>3 Years</td>
+                    <td>31.2 kg</td>
+                    <td>985-141-002-841</td>
+                    <td>Sarah Miller</td>
+                    <td>Yesterday</td>
+                  </tr>
+
+                  <tr class="inspect-patient" data-pet-name="Bailey" data-pet-species="Feline (Domestic Shorthair)" data-pet-age="2 Years" data-pet-owner="David Thorne" style="cursor: pointer;">
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-bailey.webp" alt="Bailey" class="patient-avatar" width="38" height="38">
+                        <strong>Bailey</strong>
+                      </div>
+                    </td>
+                    <td>Feline • Domestic Shorthair</td>
+                    <td>2 Years</td>
+                    <td>4.1 kg</td>
+                    <td>985-141-009-114</td>
+                    <td>David Thorne</td>
+                    <td>Today</td>
+                  </tr>
+
+                  <tr class="inspect-patient" data-pet-name="Lucy" data-pet-species="Canine (French Bulldog)" data-pet-age="4 Years" data-pet-owner="Michael Scott" style="cursor: pointer;">
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-lucy.webp" alt="Lucy" class="patient-avatar" width="38" height="38">
+                        <strong>Lucy</strong>
+                      </div>
+                    </td>
+                    <td>Canine • French Bulldog</td>
+                    <td>4 Years</td>
+                    <td>11.8 kg</td>
+                    <td>985-141-005-722</td>
+                    <td>Michael Scott</td>
+                    <td>3 Weeks Ago</td>
+                  </tr>
+
+                  <tr class="inspect-patient" data-pet-name="Bear" data-pet-species="Feline (Tabby)" data-pet-age="7 Years" data-pet-owner="Emma Watson" style="cursor: pointer;">
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-pet-bear.webp" alt="Bear" class="patient-avatar" width="38" height="38">
+                        <strong>Bear</strong>
+                      </div>
+                    </td>
+                    <td>Feline • Domestic Tabby</td>
+                    <td>7 Years</td>
+                    <td>5.3 kg</td>
+                    <td>985-141-001-993</td>
+                    <td>Emma Watson</td>
+                    <td>1 Month Ago</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 4: PET OWNERS (Section 7)
+             ===================================================================== -->
+        <section id="tab-owners" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-users" style="color: var(--color-primary);"></i> Pet Owners Directory</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Owner Name</th>
+                    <th>Email Address</th>
+                    <th>Phone</th>
+                    <th>Active Pets</th>
+                    <th>Insurance Provider</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sarah Miller</strong></td>
+                    <td>sarah.m@example.com</td>
+                    <td>+1 (555) 019-2834</td>
+                    <td>Cooper (Golden Retriever)</td>
+                    <td>Trupanion</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>David Thorne</strong></td>
+                    <td>david.t@example.com</td>
+                    <td>+1 (555) 018-9941</td>
+                    <td>Luna, Buster</td>
+                    <td>Healthy Paws</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Michael Scott</strong></td>
+                    <td>m.scott@example.com</td>
+                    <td>+1 (555) 017-3829</td>
+                    <td>Bella (French Bulldog)</td>
+                    <td>Nationwide Pet</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Emma Watson</strong></td>
+                    <td>e.watson@example.com</td>
+                    <td>+1 (555) 014-7291</td>
+                    <td>Oliver (Tabby Cat)</td>
+                    <td>Petplan</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 5: VETERINARIANS (Section 8)
+             ===================================================================== -->
+        <section id="tab-team" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-user-doctor" style="color: var(--color-primary);"></i> Clinical Veterinary Staff Overview</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Doctor</th>
+                    <th>Specialty</th>
+                    <th>Roster Shift</th>
+                    <th>Patients Today</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-staff-sarah.webp" alt="Dr. Sarah" class="patient-avatar" width="38" height="38">
+                        <div><strong>Dr. Sarah Jenkins, DVM</strong><div style="font-size: 0.75rem;">Lead General Clinician</div></div>
+                      </div>
+                    </td>
+                    <td>Internal Medicine & Geriatrics</td>
+                    <td>8:00 AM – 4:00 PM</td>
+                    <td>6 Patients</td>
+                    <td><span class="status-badge badge-in-progress">In Consultation</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-staff-michael.webp" alt="Dr. Michael" class="patient-avatar" width="38" height="38">
+                        <div><strong>Dr. Michael Vance, DVM</strong><div style="font-size: 0.75rem;">Surgical Lead</div></div>
+                      </div>
+                    </td>
+                    <td>Soft-Tissue & Orthopedics</td>
+                    <td>9:00 AM – 5:00 PM</td>
+                    <td>3 Surgeries</td>
+                    <td><span class="status-badge badge-confirmed">In Theater</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-staff-elena.webp" alt="Dr. Elena" class="patient-avatar" width="38" height="38">
+                        <div><strong>Dr. Elena Rostova, DVM</strong><div style="font-size: 0.75rem;">Ultrasound & Derm</div></div>
+                      </div>
+                    </td>
+                    <td>Dermatology & Ultrasound</td>
+                    <td>10:00 AM – 6:00 PM</td>
+                    <td>5 Patients</td>
+                    <td><span class="status-badge badge-confirmed">Available</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="patient-cell">
+                        <img src="assets/dash-staff-marcus.webp" alt="Dr. Marcus" class="patient-avatar" width="38" height="38">
+                        <div><strong>Dr. Marcus Chen, DVM</strong><div style="font-size: 0.75rem;">Triage Specialist</div></div>
+                      </div>
+                    </td>
+                    <td>Urgent Care & Critical Triage</td>
+                    <td>11:00 AM – 7:00 PM</td>
+                    <td>4 Patients</td>
+                    <td><span class="status-badge badge-confirmed">On Triage</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 6: SERVICES OVERVIEW (Section 9)
+             ===================================================================== -->
+        <section id="tab-services" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-stethoscope" style="color: var(--color-primary);"></i> Service Catalog & Pricing Rules (Demo)</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Service Code</th>
+                    <th>Category</th>
+                    <th>Clinical Procedure</th>
+                    <th>Standard Duration</th>
+                    <th>Base Fee (Demo)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>SRV-WEL-01</strong></td>
+                    <td>Wellness</td>
+                    <td>Comprehensive Annual Physical Examination</td>
+                    <td>30 mins</td>
+                    <td>$75.00</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>SRV-VAC-02</strong></td>
+                    <td>Immunology</td>
+                    <td>Core Canine Booster (DHPP + Rabies)</td>
+                    <td>20 mins</td>
+                    <td>$65.00</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>SRV-DEN-03</strong></td>
+                    <td>Dentistry</td>
+                    <td>Ultrasonic Dental Scaling & Polishing under Anesthesia</td>
+                    <td>90 mins</td>
+                    <td>$380.00</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>SRV-SUR-04</strong></td>
+                    <td>Surgical</td>
+                    <td>Routine Ovariohysterectomy (Feline Spay)</td>
+                    <td>60 mins</td>
+                    <td>$295.00</td>
+                    <td><span class="status-badge badge-confirmed">Active</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 7: VISIT RECORDS (Section 10)
+             ===================================================================== -->
+        <section id="tab-records" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-file-waveform" style="color: var(--color-primary);"></i> Patient Visit Archive</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Patient</th>
+                    <th>Clinical Summary</th>
+                    <th>Diagnosis / Assessment</th>
+                    <th>Attending Doctor</th>
+                    <th>Invoicing</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Oct 21, 2026</td>
+                    <td>Cooper (Golden Retriever)</td>
+                    <td>Severe calculus Grade 2, full ultrasonic clean completed</td>
+                    <td>Periodontal Stage 1 resolved</td>
+                    <td>Dr. Sarah Jenkins</td>
+                    <td><span class="status-badge badge-confirmed">Paid in Full</span></td>
+                  </tr>
+                  <tr>
+                    <td>Oct 19, 2026</td>
+                    <td>Bella (French Bulldog)</td>
+                    <td>Cytology showed Malassezia yeast overgrowth left ear</td>
+                    <td>Otitis Externa fungal</td>
+                    <td>Dr. Elena Rostova</td>
+                    <td><span class="status-badge badge-confirmed">Paid in Full</span></td>
+                  </tr>
+                  <tr>
+                    <td>Oct 15, 2026</td>
+                    <td>Oliver (Tabby Cat)</td>
+                    <td>Biannual senior wellness, mild azotemia noted</td>
+                    <td>Early CKD Stage 1 monitoring</td>
+                    <td>Dr. Marcus Chen</td>
+                    <td><span class="status-badge badge-confirmed">Paid in Full</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 8: VACCINATION REMINDERS (Section 11)
+             ===================================================================== -->
+        <section id="tab-reminders" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-syringe" style="color: var(--color-primary);"></i> Vaccination Follow-Up Reminders</h3>
+              <button type="button" class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">
+                <i class="fa-solid fa-paper-plane"></i> Send All Reminders (Demo)
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Patient</th>
+                    <th>Guardian</th>
+                    <th>Vaccine Needed</th>
+                    <th>Due Date</th>
+                    <th>Channel</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Cooper</strong> (Golden Retriever)</td>
+                    <td>Sarah Miller (555-019-2834)</td>
+                    <td>Bordetella Annual Booster</td>
+                    <td>Today (Oct 22)</td>
+                    <td>SMS & Email</td>
+                    <td><button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Send Single</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Luna</strong> (Shorthair Cat)</td>
+                    <td>David Thorne (555-018-9941)</td>
+                    <td>Rabies 1-Year Booster</td>
+                    <td>Today (Oct 22)</td>
+                    <td>SMS</td>
+                    <td><button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Send Single</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Buster</strong> (Rescue Mix)</td>
+                    <td>David Thorne (555-018-9941)</td>
+                    <td>Canine Leptospirosis</td>
+                    <td>In 3 Days</td>
+                    <td>Email</td>
+                    <td><button type="button" class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Send Single</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 9: REPORTS & ANALYTICS (Section 14)
+             ===================================================================== -->
+        <section id="tab-reports" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-chart-line" style="color: var(--color-primary);"></i> Clinic Operations Analytics (Demo)</h3>
+            </div>
+            <div class="dash-card-body">
+              <div class="dash-stats-grid" style="margin-bottom: 2rem;">
+                <div class="dash-stat-card">
+                  <div class="dash-stat-info">
+                    <h3>99.4%</h3>
+                    <p>Client Satisfaction Score</p>
+                    <span class="stat-trend trend-up">Exceeds national benchmark</span>
+                  </div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-info">
+                    <h3>92%</h3>
+                    <p>Vaccination Adherence</p>
+                    <span class="stat-trend trend-up">+4% after SMS reminders</span>
+                  </div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-info">
+                    <h3>18.4 mins</h3>
+                    <p>Average Checkup Duration</p>
+                    <span class="stat-trend">Unhurried consultations</span>
+                  </div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-info">
+                    <h3>0.02%</h3>
+                    <p>Surgical Complication Rate</p>
+                    <span class="stat-trend trend-up">Strict sterility adherence</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background-color: #F8FAFC; padding: 2rem; border-radius: var(--radius-md); text-align: center; border: 1px dashed var(--dash-border);">
+                <i class="fa-solid fa-chart-simple" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                <h4>Quarterly Performance & Financial Metrics Visualization</h4>
+                <p style="font-size: 0.9rem; color: var(--dash-muted); max-width: 500px; margin: 0 auto 1.5rem;">
+                  Interactive charts for revenue, inventory turnover, and species breakdown are available in this operations management simulation.
+                </p>
+                <button type="button" class="btn btn-outline" onclick="window.location.href='404.html'">
+                  <i class="fa-solid fa-download"></i> Download Full Executive Report (PDF)
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 10: MESSAGES (Section 15 preview)
+             ===================================================================== -->
+        <section id="tab-messages" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-comments" style="color: var(--color-primary);"></i> Internal Clinic Team Communications</h3>
+            </div>
+            <div class="dash-card-body">
+              <div class="task-checklist">
+                <div class="task-item">
+                  <div class="patient-cell">
+                    <img src="assets/dash-chat-sarah.webp" alt="Dr. Sarah" class="patient-avatar" width="38" height="38">
+                    <div>
+                      <strong>Dr. Sarah Jenkins:</strong> Please reserve surgical prep room 2 for dental radiograph positioning at 2:00 PM.
+                      <div style="font-size: 0.75rem; color: var(--dash-muted);">15 mins ago</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="task-item">
+                  <div class="patient-cell">
+                    <img src="assets/dash-chat-admin.webp" alt="Admin" class="patient-avatar" width="38" height="38">
+                    <div>
+                      <strong>Operations Desk:</strong> Refrigerator temperature logs for Vaccine Fridge 1 recorded at 3.9°C. All clear.
+                      <div style="font-size: 0.75rem; color: var(--dash-muted);">45 mins ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 11: EMAIL CENTER (Section 15 Master-Detail)
+             With sender, subject, preview, date/time, read/unread state, priority,
+             search, filters, email detail view.
+             ===================================================================== -->
+        <section id="tab-email" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-envelope" style="color: var(--color-primary);"></i> Clinic Operations Email Center</h3>
+              <div style="font-size: 0.85rem; color: var(--dash-muted);">Fictional demonstration messages</div>
+            </div>
+            <div class="email-center-grid">
+              <!-- Left Master List -->
+              <div class="email-list-pane">
+                <div class="email-search-bar">
+                  <input type="text" id="emailSearchInput" placeholder="Filter emails..." aria-label="Search email messages">
+                </div>
+                <div class="email-items-container">
+                  <!-- Populated dynamically by assets/dashboard.js -->
+                </div>
+              </div>
+
+              <!-- Right Detail Reader -->
+              <div class="email-detail-pane">
+                <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--dash-muted);">
+                  Select an email on the left to read full contents.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 12: NOTIFICATIONS (Section 13)
+             ===================================================================== -->
+        <section id="tab-notifications" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-bell" style="color: var(--color-primary);"></i> System Notifications</h3>
+            </div>
+            <div class="dash-card-body">
+              <div class="task-checklist">
+                <div class="task-item" style="border-left: 4px solid var(--color-primary);">
+                  <div>
+                    <strong>New Appointment Inquiry:</strong> Owner Jane Doe requested appointment for pet "Milo".
+                    <div style="font-size: 0.75rem; color: var(--dash-muted);">10 mins ago</div>
+                  </div>
+                </div>
+                <div class="task-item" style="border-left: 4px solid var(--color-accent);">
+                  <div>
+                    <strong>Vaccine Cold Chain Alert:</strong> Weekly replenishment arrived and placed in storage.
+                    <div style="font-size: 0.75rem; color: var(--dash-muted);">1 hour ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================================
+             PANEL 13: SETTINGS & SYSTEM STATUS (Section 18)
+             ===================================================================== -->
+        <section id="tab-settings" class="dash-view-panel">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa-solid fa-gear" style="color: var(--color-primary);"></i> Operations Settings & Configuration</h3>
+            </div>
+            <div class="dash-card-body" style="max-width: 650px;">
+              <form id="adminSettingsForm" novalidate>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" for="adminClinicName">Clinic Trading Name <span style="color: #F87171;">*</span></label>
+                  <input type="text" id="adminClinicName" class="form-control" value="PawCare Veterinary Clinic" required>
+                  <div class="form-error-msg" style="color: #EF4444; font-size: 0.8rem; margin-top: 0.25rem;"></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" for="adminOperatingHours">Operating Hours Notice (Demo) <span style="color: #F87171;">*</span></label>
+                  <input type="text" id="adminOperatingHours" class="form-control" value="Monday – Friday: 8:00 AM – 7:00 PM" required>
+                  <div class="form-error-msg" style="color: #EF4444; font-size: 0.8rem; margin-top: 0.25rem;"></div>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label class="form-label" for="adminNotificationEmail">Notification Email <span style="color: #F87171;">*</span></label>
+                  <input type="email" id="adminNotificationEmail" class="form-control sidebar-user-email-input" value="admin@pawcare-demo.org" required>
+                  <div class="form-error-msg" style="color: #EF4444; font-size: 0.8rem; margin-top: 0.25rem;"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa-solid fa-floppy-disk"></i> Save Operations Preferences
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Patient Inspection Modal Dialog -->
+  <div id="patientDetailModal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button type="button" class="modal-close-btn" data-modal-close aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+        <div style="width: 52px; height: 52px; border-radius: 12px; background: var(--color-primary-soft); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+          <i class="fa-solid fa-shield-dog"></i>
+        </div>
+        <div>
+          <h3 class="modal-pet-name" style="margin-bottom: 0.2rem; font-size: 1.4rem;">Patient Chart</h3>
+          <p class="modal-pet-meta" style="font-size: 0.85rem; color: var(--dash-muted); margin: 0;">Record Details</p>
+        </div>
+      </div>
+      <div style="background: var(--dash-bg); padding: 1.25rem; border-radius: var(--radius-md); font-size: 0.875rem; margin-bottom: 1.5rem;">
+        <div style="margin-bottom: 0.5rem;"><strong>Allergies:</strong> None reported on file.</div>
+        <div style="margin-bottom: 0.5rem;"><strong>Dietary Regimen:</strong> Hill's Science Diet Adult Canine (250g daily).</div>
+        <div style="margin-bottom: 0.5rem;"><strong>Vaccination Status:</strong> Up to date (Next due: November 2026).</div>
+        <div><strong>Notes:</strong> Responds positively to peanut butter treats. Calm temperament.</div>
+      </div>
+      <div style="text-align: right;">
+        <button type="button" class="btn btn-primary btn-sm" data-modal-close>Close Chart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/main.js"></script>
+  <script src="assets/dashboard.js"></script>
+  <script src="assets/auth.js"></script>
+</body>
+</html>

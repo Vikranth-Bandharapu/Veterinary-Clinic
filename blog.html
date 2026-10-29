@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Care Journal | PawCare Veterinary Clinic</title>
+  <meta name="description" content="Veterinarian-reviewed articles on puppy care, feline health, pet nutrition, dental hygiene, senior pet comfort, and behavior.">
+  <meta name="keywords" content="pet care journal, puppy training tips, cat nutrition, dog dental care, senior dog arthritis, Fear-Free handling, PawCare blog">
+
+  <!-- Favicon / Fonts / Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/responsive.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Header & Navigation
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="PawCare Veterinary Clinic Home">
+        <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img" width="150" height="45">
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="login.html" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+        </a>
+        <a href="signup.html" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-user-plus"></i> Sign Up
+        </a>
+        <button type="button" class="mobile-toggle" aria-label="Open Mobile Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-drawer-backdrop"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo" aria-label="PawCare Home">
+        <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img" width="135" height="40">
+      </a>
+      <button type="button" class="mobile-drawer-close" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="blog.html" class="nav-link active">Blog</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="login.html" class="btn btn-outline">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+      </a>
+      <a href="signup.html" class="btn btn-primary">
+        <i class="fa-solid fa-user-plus"></i> Sign Up
+      </a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- =========================================================================
+         SECTION 1: Pet Care Journal Hero
+         ========================================================================= -->
+    <section class="hero-wrapper" id="journal-hero">
+      <div class="container hero-grid">
+        <div class="hero-content" data-aos="fade-right">
+          <div class="hero-badge-pill">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Educational Publication • General Wellness</span>
+          </div>
+          <h1 class="hero-title">
+            The Pet Care Journal: <em>Knowledge</em> for healthy companions.
+          </h1>
+          <p class="hero-description">
+            Practical, veterinarian-reviewed health articles written to help you make informed daily decisions for dogs and cats across every stage of their lives.
+          </p>
+          <div class="form-disclaimer" style="margin-bottom: 2rem;">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <strong>Educational Disclaimer:</strong> Articles provide general pet care principles and cannot substitute for an individualized veterinary diagnosis. Never administer human pharmaceuticals or home treatments without professional consultation.
+          </div>
+        </div>
+
+        <div class="hero-visual-3d" data-aos="fade-left">
+          <div class="hero-visual-frame tilt-card">
+            <img src="assets/blog-hero-reading.webp" alt="Pet parent and happy companion enjoying peaceful reading atmosphere" width="800" height="520">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: Featured Article
+         ========================================================================= -->
+    <section class="section section-bg-white" id="featured-article">
+      <div class="container">
+        <div class="section-tag tag-accent" data-aos="fade-up">Featured Clinical Deep-Dive</div>
+        <div class="editorial-grid" style="margin-top: 1rem;" data-aos="fade-up">
+          <div class="editorial-visual">
+            <div class="editorial-image-wrapper tilt-card">
+              <img src="assets/blog-feature-microbiome.webp" alt="Wholesome pet food ingredients and canine gut microbiome balance" width="700" height="480" loading="lazy">
+            </div>
+          </div>
+          <div class="editorial-content">
+            <div class="journal-meta">
+              <span><i class="fa-regular fa-calendar"></i> October 2026</span>
+              <span>•</span>
+              <span>8 min read</span>
+              <span>•</span>
+              <span>Dr. Sarah Jenkins, DVM</span>
+            </div>
+            <h2 class="section-title">Demystifying Modern Pet Nutrition: Reading Between the Guaranteed Analysis.</h2>
+            <p class="section-subtitle">
+              How proteins, digestible fibers, moisture content, and life-stage AAFCO declarations genuinely influence your companion's gut microbiome, skin barrier, and vitality.
+            </p>
+            <div class="feature-check-list">
+              <div class="feature-check-item">
+                <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="feature-check-text">
+                  <strong>Protein Quality vs Ash Percentage</strong>
+                  <span>Why crude protein numbers don't tell the full biological bioavailability story.</span>
+                </div>
+              </div>
+              <div class="feature-check-item">
+                <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="feature-check-text">
+                  <strong>Moisture & Renal Hydration</strong>
+                  <span>Why wet or hydrated foods are critical for feline urinary tract stone prevention.</span>
+                </div>
+              </div>
+            </div>
+            <a href="404.html" class="btn btn-primary">
+              <i class="fa-solid fa-book-reader"></i> Read Full Featured Story
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: Article Categories & Search / Filtering
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="search-filter-section">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <div class="section-tag">Library Navigation</div>
+          <h2 class="section-title">Explore Articles by Topic</h2>
+          <p class="section-subtitle">
+            Filter our veterinary articles by life stage, preventive care, behavior, or clinical nutrition.
+          </p>
+        </div>
+
+        <div class="search-filter-box" data-aos="fade-up">
+          <div class="search-filter-input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="blogSearchInput" placeholder="Search pet health articles (e.g. vaccines, teeth, diet)..." aria-label="Search articles">
+          </div>
+          <div class="category-pills">
+            <button type="button" class="cat-pill active">All Articles</button>
+            <button type="button" class="cat-pill">Puppy & Kitten</button>
+            <button type="button" class="cat-pill">Nutrition</button>
+            <button type="button" class="cat-pill">Preventive Care</button>
+            <button type="button" class="cat-pill">Senior Health</button>
+            <button type="button" class="cat-pill">Dental</button>
+            <button type="button" class="cat-pill">Behavior</button>
+            <button type="button" class="cat-pill">Seasonal Safety</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: Latest Articles Grid
+         ========================================================================= -->
+    <section class="section section-bg-white" id="latest-articles">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <div class="section-tag">Recently Published</div>
+          <h2 class="section-title">Latest Medical & Wellness Entries</h2>
+        </div>
+
+        <div class="journal-grid" data-aos="fade-up">
+          <article class="journal-card tilt-card">
+            <div class="journal-img-wrap">
+              <img src="assets/blog-article-periodontal.webp" alt="Pet dental examination" width="700" height="230" loading="lazy">
+              <span class="journal-category">Dentistry</span>
+            </div>
+            <div class="journal-content">
+              <div class="journal-meta"><span>5 min read</span> • <span>Dr. Michael Vance</span></div>
+              <h3 class="journal-title">Gingivitis to Periodontitis: The Stages of Oral Decay</h3>
+              <p class="journal-excerpt">Recognizing early redness along pet gums and why waiting until teeth wobble makes surgical extractions unavoidable.</p>
+              <a href="404.html" class="paw-card-link">Read Entry <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="journal-card tilt-card">
+            <div class="journal-img-wrap">
+              <img src="assets/blog-kitten.webp" alt="Playful curious kitten exploring home" width="700" height="230" loading="lazy">
+              <span class="journal-category">Kittens</span>
+            </div>
+            <div class="journal-content">
+              <div class="journal-meta"><span>4 min read</span> • <span>Veterinary Team</span></div>
+              <h3 class="journal-title">The First 12 Weeks: Essential Kitten Milestones</h3>
+              <p class="journal-excerpt">From weaning to social litterbox habits, how early environmental enrichment creates confident indoor companions.</p>
+              <a href="404.html" class="paw-card-link">Read Entry <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <article class="journal-card tilt-card">
+            <div class="journal-img-wrap">
+              <img src="assets/blog-senior.webp" alt="Peaceful senior dog on comfortable orthopedic foam bed" width="700" height="230" loading="lazy">
+              <span class="journal-category">Senior Care</span>
+            </div>
+            <div class="journal-content">
+              <div class="journal-meta"><span>6 min read</span> • <span>Dr. Elena Rostova</span></div>
+              <h3 class="journal-title">Adapting Your Home for an Aging Senior Canine</h3>
+              <p class="journal-excerpt">Simple home adaptations like runner rugs on hardwood, elevated dishes, and anti-slip stairs make huge mobility differences.</p>
+              <a href="404.html" class="paw-card-link">Read Entry <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: Puppy Care
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="puppy-care-topic">
+      <div class="container editorial-grid">
+        <div class="editorial-visual" data-aos="fade-right">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-puppy-training.webp" alt="Puppy during early leash and socialization training in the park" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-left">
+          <div class="section-tag tag-accent">Puppy Care</div>
+          <h2 class="section-title">Crate training, bite inhibition & socialization windows.</h2>
+          <p class="section-subtitle">
+            The neurodevelopmental window between 8 and 16 weeks of age is the most influential period in a dog's lifetime. Exposing puppies safely to diverse surfaces, sounds, and people builds lifelong emotional resilience.
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Positive Crate Association</strong>
+                <span>Crates should serve as peaceful dens filled with lick-mats, never punitive isolation zones.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Vaccine Parvo Safety While Socializing</strong>
+                <span>Balancing critical socialization with strict avoidance of high-risk communal dog parks before final boosters.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-primary">
+            <i class="fa-solid fa-bone"></i> Read Complete Puppy Guide
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 6: Kitten Care
+         ========================================================================= -->
+    <section class="section section-bg-white" id="kitten-care-topic">
+      <div class="container editorial-grid reversed">
+        <div class="editorial-visual" data-aos="fade-left">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-kitten-scratching.webp" alt="Kitten playing with multi-tier scratching post" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-right">
+          <div class="section-tag">Kitten Care</div>
+          <h2 class="section-title">Scratching posts, litter preferences & carrier training.</h2>
+          <p class="section-subtitle">
+            Cats are naturally sensitive to substrate textures and environmental changes. Teaching kittens to love their travel carriers transforms future veterinary visits into calm outings.
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Carrier as Permanent Furniture</strong>
+                <span>Leave carriers open in living spaces with blankets so they become trusted sleeping nests.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Litter Box Math (N + 1 Rule)</strong>
+                <span>Always maintain one more litter box than the number of cats in the home to prevent territory stress.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-outline">
+            <i class="fa-solid fa-paw"></i> Read Complete Kitten Guide
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 7: Nutrition and Feeding
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="nutrition-topic">
+      <div class="container editorial-grid">
+        <div class="editorial-visual" data-aos="fade-right">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-nutrition-bcs.webp" alt="Fit athletic dog maintaining ideal body condition score outdoors" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-left">
+          <div class="section-tag tag-accent">Nutrition & Feeding</div>
+          <h2 class="section-title">Preventing canine & feline obesity through precision.</h2>
+          <p class="section-subtitle">
+            Carrying even 15% extra body weight shortens a dog or cat's lifespan by up to two years and drastically elevates the incidence of osteoarthritis, pancreatitis, and diabetes.
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Use a Gram Kitchen Scale</strong>
+                <span>Measuring cups can vary portions by up to 25%; weighing food prevents slow caloric creep.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Treats Should Never Exceed 10%</strong>
+                <span>Keep training rewards under 10% of total daily calories to maintain nutritional mineral balances.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-primary">
+            <i class="fa-solid fa-scale-unbalanced"></i> Read Weight Management Tips
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 8: Preventive Care (BCS Guide)
+         ========================================================================= -->
+    <section class="section section-bg-white" id="preventive-topic">
+      <div class="container editorial-grid reversed">
+        <div class="editorial-visual" data-aos="fade-left">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-preventive-screening.webp" alt="Veterinarian checking canine vitals and auscultation" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-right">
+          <div class="section-tag">Preventive Screening</div>
+          <h2 class="section-title">Understanding your pet's Body Condition Score (BCS).</h2>
+          <p class="section-subtitle">
+            Rather than focusing purely on scale weight, veterinary clinicians use a 1 to 9 Body Condition Score. Can you easily palpate your dog's ribs without excess fat layers?
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>The Rib Check Test</strong>
+                <span>Ribs should feel like the back of your knuckles when your hand is open and flat.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Visible Abdominal Tuck</strong>
+                <span>Looking from above and the side, an identifiable waistline should be visible behind the ribs.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-outline">
+            <i class="fa-solid fa-chart-simple"></i> View Full BCS Chart
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 9: Vaccination Education
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="vaccine-education-topic">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <div class="section-tag tag-accent">Vaccine Insights</div>
+          <h2 class="section-title">Core versus non-core: Navigating pet immunizations.</h2>
+          <p class="section-subtitle">
+            Not all vaccines are required for every pet. Understanding how transmission vectors dictate need empowers pet parents.
+          </p>
+        </div>
+
+        <div class="step-journey-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));" data-aos="fade-up">
+          <div class="paw-card tilt-card">
+            <div class="paw-card-icon"><i class="fa-solid fa-shield-virus"></i></div>
+            <h3 class="paw-card-title">Core Mandates</h3>
+            <p class="paw-card-desc">Rabies and Parvovirus have high fatality rates and public health implications; universal vaccination is medically necessary for all companion pets.</p>
+            <div class="paw-card-footer">
+              <a href="404.html" class="paw-card-link">Core Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="paw-card tilt-card">
+            <div class="paw-card-icon"><i class="fa-solid fa-tree"></i></div>
+            <h3 class="paw-card-title">Lifestyle Vaccines</h3>
+            <p class="paw-card-desc">Leptospirosis, Lyme, and Bordetella depend on regional wildlife prevalence, standing puddle water, grooming salon visits, and hiking habits.</p>
+            <div class="paw-card-footer">
+              <a href="404.html" class="paw-card-link">Risk Assessment <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="paw-card tilt-card">
+            <div class="paw-card-icon"><i class="fa-solid fa-vial"></i></div>
+            <h3 class="paw-card-title">Titer Alternatives</h3>
+            <p class="paw-card-desc">For older pets or those with documented past vaccine sensitivities, antibody titers verify whether sufficient immune memory remains active.</p>
+            <div class="paw-card-footer">
+              <a href="404.html" class="paw-card-link">Titer Science <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 10: Senior Pet Care
+         ========================================================================= -->
+    <section class="section section-bg-white" id="senior-care-topic">
+      <div class="container editorial-grid">
+        <div class="editorial-visual" data-aos="fade-right">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-senior-mobility.webp" alt="Senior dog resting peacefully on comfortable padded cushion" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-left">
+          <div class="section-tag">Senior Wellness</div>
+          <h2 class="section-title">Cognitive dysfunction syndrome & subtle joint pain.</h2>
+          <p class="section-subtitle">
+            Pets are master stoics; dogs and cats rarely vocalize chronic pain. Instead, signs appear as reluctance to jump onto sofas, nighttime wandering, or changes in grooming.
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Modern Canine Arthritis Monoclonal Antibodies</strong>
+                <span>Targeted nerve growth factor (NGF) therapies relieve arthritis without placing metabolic stress on kidneys.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Nightlights & Routine Stability</strong>
+                <span>Preserving predictable routines and gentle nightlights assists pets experiencing cognitive evening disorientation.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-primary">
+            <i class="fa-solid fa-heart-pulse"></i> Read Senior Mobility Guide
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 11: Dental Hygiene
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="dental-hygiene-topic">
+      <div class="container editorial-grid reversed">
+        <div class="editorial-visual" data-aos="fade-left">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-dental-brushing.webp" alt="Gentle pet toothbrushing with soft bristles and enzymatic poultry paste" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-right">
+          <div class="section-tag tag-accent">Dental Hygiene</div>
+          <h2 class="section-title">Home tooth brushing tips: Starting slow with enzymatic pastes.</h2>
+          <p class="section-subtitle">
+            Never use human toothpaste on animals due to toxic foaming agents and xylitol. Enzymatic veterinary pastes taste like poultry or malt and dissolve plaque without vigorous scrub pressure.
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Day 1 to 5: Finger Treat Introduction</strong>
+                <span>Let your pet lick enzymatic poultry-flavored paste off your finger as a dessert reward.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>VOHC Certified Seal Products</strong>
+                <span>Select dental chews and water additives carrying the Veterinary Oral Health Council (VOHC) seal of efficacy.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-outline">
+            <i class="fa-solid fa-tooth"></i> Download Brushing Checklist
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 12: Pet Behavior
+         ========================================================================= -->
+    <section class="section section-bg-white" id="behavior-topic">
+      <div class="container editorial-grid">
+        <div class="editorial-visual" data-aos="fade-right">
+          <div class="editorial-image-wrapper tilt-card">
+            <img src="assets/blog-behavior-stress.webp" alt="Dog displaying subtle calming signals and relaxed posture" width="700" height="480" loading="lazy">
+          </div>
+        </div>
+        <div class="editorial-content" data-aos="fade-left">
+          <div class="section-tag">Pet Behavior</div>
+          <h2 class="section-title">Deciphering stress: Yawning, lip licking & whale eyes.</h2>
+          <p class="section-subtitle">
+            When a dog turns its head away, licks its lips rapidly without food present, or shows the whites of its eyes, it is signaling displacement anxiety. Recognizing these cues prevents defensive bite escalation.
+          </p>
+          <div class="feature-check-list">
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>The Ladder of Aggression</strong>
+                <span>Understanding that growling is a polite warning; punishing a growl removes the warning, leading to silent bites.</span>
+              </div>
+            </div>
+            <div class="feature-check-item">
+              <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="feature-check-text">
+                <strong>Consent Checks for Petting</strong>
+                <span>Pause petting for three seconds; if the pet nudges your hand, consent is clear. If they step away, respect their space.</span>
+              </div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-primary">
+            <i class="fa-solid fa-ear-listen"></i> Read Body Language Guide
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 13: Seasonal Pet Safety
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="seasonal-safety-topic">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <div class="section-tag tag-accent">Seasonal Safety</div>
+          <h2 class="section-title">Protecting companions through temperature extremes.</h2>
+          <p class="section-subtitle">
+            Weather changes bring unique biological hazards: hot asphalt burns in summer, road salt paw cracks and antifreeze in winter, and toxic chocolate around holidays.
+          </p>
+        </div>
+
+        <div class="step-journey-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));" data-aos="fade-up">
+          <div class="paw-card tilt-card">
+            <div class="paw-card-icon"><i class="fa-solid fa-temperature-high"></i></div>
+            <h3 class="paw-card-title">Summer Heatstroke</h3>
+            <p class="paw-card-desc">Never leave pets in parked cars even with cracked windows. Asphalt above 85°F burns paw pads within sixty seconds. Walk in early mornings.</p>
+            <div class="paw-card-footer">
+              <a href="404.html" class="paw-card-link">Summer Tips <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="paw-card tilt-card">
+            <div class="paw-card-icon"><i class="fa-solid fa-snowflake"></i></div>
+            <h3 class="paw-card-title">Winter Paw Defense</h3>
+            <p class="paw-card-desc">Rock salt and chemical de-icers irritate paw pads and cause oral toxicity when licked off. Wipe paws with damp washcloths after snowy walks.</p>
+            <div class="paw-card-footer">
+              <a href="404.html" class="paw-card-link">Winter Tips <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="paw-card tilt-card">
+            <div class="paw-card-icon"><i class="fa-solid fa-skull-crossbones"></i></div>
+            <h3 class="paw-card-title">Holiday Toxin Hazards</h3>
+            <p class="paw-card-desc">Keep chocolate, xylitol baked sweets, grapes, onions, and lilies (strictly fatal to cats) far away from kitchen counter reaches.</p>
+            <div class="paw-card-footer">
+              <a href="404.html" class="paw-card-link">Toxin Checklist <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;" data-aos="fade-up">
+          <div class="tilt-card" style="display: inline-block; max-width: 600px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+            <img src="assets/blog-seasonal-heat.webp" alt="Dog staying hydrated and resting cool in summer heat" width="600" height="340" style="display: block; width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 14: Newsletter Subscription
+         ========================================================================= -->
+    <section class="section section-bg-white" id="newsletter">
+      <div class="container">
+        <div class="cta-banner-wrap" style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);" data-aos="zoom-in">
+          <div class="cta-banner-grid">
+            <div>
+              <div class="section-tag" style="background: rgba(255,255,255,0.2); color: #FFFFFF;">Monthly Pet Wellness Digest</div>
+              <h2>Receive trusted pet health guidance in your inbox.</h2>
+              <p>
+                Join thousands of caring pet owners receiving our monthly veterinary digest featuring seasonal care reminders, toxic plant warnings, and nutrition guides.
+              </p>
+            </div>
+            <div>
+              <form class="newsletter-form" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <input type="email" placeholder="Enter your email address..." class="form-control" style="background: #FFFFFF;" required aria-label="Email for pet newsletter">
+                <button type="submit" class="btn btn-accent btn-lg">
+                  <i class="fa-solid fa-paper-plane"></i> Subscribe to Journal Digest
+                </button>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.7); text-align: center;">
+                  Demo subscription form. No spam. Unsubscribe at any time.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 15: Journal FAQs
+         ========================================================================= -->
+    <section class="section section-bg-alt" id="journal-faqs">
+      <div class="container">
+        <div class="section-header text-center" data-aos="fade-up">
+          <div class="section-tag tag-accent">Journal Help</div>
+          <h2 class="section-title">Frequently Asked Questions About Advice</h2>
+          <p class="section-subtitle">
+            How to responsibly interpret online veterinary advice and when to seek urgent clinical attention.
+          </p>
+        </div>
+
+        <div class="faq-accordion" data-aos="fade-up">
+          <div class="accordion-item active">
+            <button type="button" class="accordion-header" aria-expanded="true">
+              <span>Can I use articles to diagnose my pet's symptoms at home?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </button>
+            <div class="accordion-body" style="max-height: 200px;">
+              <div class="accordion-content">
+                No. Online pet health articles are strictly educational tools to foster awareness and prepare questions for your veterinarian. Many pet illnesses share identical symptoms (e.g. vomiting may stem from dietary indiscretion, kidney disease, or life-threatening obstruction). Always contact a licensed veterinarian.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-header" aria-expanded="false">
+              <span>Is it safe to give my dog over-the-counter human pain medication?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                Never. Human pain relievers such as Tylenol (acetaminophen), Advil/Motrin (ibuprofen), and Aleve (naproxen) cause acute hepatic failure and severe gastric ulceration in dogs, and are rapidly fatal to cats. Only use veterinary-approved NSAIDs prescribed by your doctor.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <button type="button" class="accordion-header" aria-expanded="false">
+              <span>Who authors the articles in the PawCare Journal?</span>
+              <div class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-content">
+                Articles are drafted based on peer-reviewed clinical veterinary guidelines. In our demo clinic context, articles are credited to our fictional veterinary staff characters to illustrate a genuine practice blog.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 16: Final CTA
+         ========================================================================= -->
+    <section class="section section-bg-white" id="journal-final-cta">
+      <div class="container">
+        <div class="cta-banner-wrap" data-aos="zoom-in">
+          <div class="cta-banner-grid">
+            <div>
+              <div class="section-tag" style="background: rgba(255, 255, 255, 0.2); color: #FFFFFF;">Have Specific Questions?</div>
+              <h2>Discuss your companion's care with our clinicians.</h2>
+              <p>
+                Reading general articles is helpful, but nothing compares to an individualized physical exam tailored to your pet's age, breed, and health history.
+              </p>
+            </div>
+            <div class="cta-banner-actions">
+              <a href="404.html" class="btn btn-white btn-lg">
+                <i class="fa-regular fa-calendar-check"></i> Book a Consultation
+              </a>
+              <a href="404.html" class="btn btn-outline-white btn-lg">
+                <i class="fa-solid fa-circle-question"></i> Browse Care Guides
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-disclaimer-card" role="note">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+          <strong>Fictional Demonstration Website:</strong>
+          <p>
+            PawCare Veterinary Clinic is a conceptual demonstration brand. All clinician profiles, medical advice, pricing, service packages, and contact information are for illustrative purposes only. For actual pet health emergencies, contact a local licensed 24/7 veterinary hospital immediately.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo footer-brand-link" aria-label="PawCare Veterinary Clinic Home" style="margin-bottom: 1.25rem; display: inline-block;">
+            <img src="assets/logo.webp" alt="PawCare Veterinary Clinic Logo" class="brand-logo-img brand-logo-footer" width="160" height="44">
+          </a>
+          <p>Compassionate veterinary medicine, preventive health examinations, and lifelong wellness for dogs and cats.</p>
+          <div class="footer-social-links">
+            <a href="404.html" class="footer-social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="footer-social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="footer-social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links-list">
+            <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+            <li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+            <li><a href="blog.html"><i class="fa-solid fa-chevron-right"></i> Blog</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Portal Access</div>
+          <ul class="footer-links-list">
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Staff Login</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Staff Sign Up</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Admin Dashboard</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Vet Workspace</a></li>
+            <li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Client Portal (404)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Clinic Hours (Demo)</div>
+          <div class="footer-hours-box">
+            <div class="footer-hours-row"><span>Mon – Fri:</span><strong>8:00 AM – 7:00 PM</strong></div>
+            <div class="footer-hours-row"><span>Saturday:</span><strong>9:00 AM – 4:00 PM</strong></div>
+            <div class="footer-hours-row"><span>Sunday:</span><strong>Emergency / Closed</strong></div>
+          </div>
+          <div style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-white-muted);">
+            <a href="https://maps.google.com/?q=Stackly,+Tamil+Nadu" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;" title="View Stackly, Tamil Nadu on Google Maps">
+              <i class="fa-solid fa-location-dot" style="color: var(--color-accent);"></i> Stackly, Tamil Nadu
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span class="current-year">2026</span> Stackly Veterinary Clinic. All rights reserved. Demo Project.</div>
+        <div>
+          <a href="404.html" style="margin-right: 1.5rem;">Privacy Policy</a>
+          <a href="404.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/animations.js"></script>
+</body>
+</html>
