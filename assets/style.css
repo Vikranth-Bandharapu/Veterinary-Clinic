@@ -957,7 +957,7 @@ body.drawer-open {
 }
 
 /* --------------------------------------------------------------------------
-   Step-by-Step Visual Journey (Your First Visit)
+   Step-by-Step Visual Journey & Card Grids
    -------------------------------------------------------------------------- */
 .step-journey-grid {
   display: grid;
@@ -966,8 +966,18 @@ body.drawer-open {
   position: relative;
 }
 
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  position: relative;
+}
+
 .responsive-3-col {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
 }
 
 @media (max-width: 992px) {
@@ -982,15 +992,18 @@ body.drawer-open {
   }
 }
 
-.step-journey-grid::before {
-  content: '';
-  position: absolute;
-  top: 36px;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, var(--color-primary-light), var(--color-primary-light) 6px, transparent 6px, transparent 12px);
-  z-index: 1;
+/* Completely disable any dashed connecting line across all grids */
+.step-journey-grid::before,
+.step-journey-timeline::before,
+.card-grid::before,
+.feature-grid::before,
+.responsive-3-col::before {
+  content: none !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 .step-card {
@@ -1486,7 +1499,106 @@ body.drawer-open {
   border: 1.5px solid var(--border-card);
   border-radius: var(--radius-md);
   background-color: #FFFFFF;
+  color: #111827 !important;
   transition: all var(--transition-fast);
+}
+
+.form-control::placeholder {
+  color: #64748B;
+  opacity: 1;
+}
+
+.newsletter-form .form-control {
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+  font-weight: 500;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.newsletter-form .form-control:focus {
+  background-color: #FFFFFF !important;
+  color: #111827 !important;
+  border-color: #E07A5F !important;
+  box-shadow: 0 0 0 4px rgba(224, 122, 95, 0.35) !important;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: #64748B !important;
+  opacity: 1;
+}
+
+/* Blog Search & Category Pills */
+.search-filter-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.search-filter-input {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.search-filter-input i {
+  position: absolute;
+  left: 1.25rem;
+  color: #64748B;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
+.search-filter-input input {
+  width: 100%;
+  padding: 0.85rem 1.25rem 0.85rem 2.85rem;
+  border: 1.5px solid var(--border-card);
+  border-radius: var(--radius-md);
+  background-color: #FFFFFF;
+  color: #111827 !important;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.search-filter-input input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cat-pill {
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  background-color: #F1F5F9;
+  color: #334155;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.cat-pill:hover {
+  background-color: #E2E8F0;
+  color: #0F172A;
+}
+
+.cat-pill.active {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
 }
 
 select.form-control,
@@ -1677,14 +1789,16 @@ select {
 }
 
 /* --------------------------------------------------------------------------
-   Site Footer
+   Site Footer (Redesigned with Distinct Midnight Obsidian Tone & Accent Border)
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: var(--bg-dark);
+  background: linear-gradient(180deg, #0A130F 0%, #050B08 100%);
   color: var(--text-white);
   padding: 5.5rem 0 2.5rem;
   position: relative;
   overflow: hidden;
+  border-top: 3px solid var(--color-accent);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.16);
 }
 
 .footer-top-grid {
@@ -1695,7 +1809,7 @@ select {
 }
 
 .footer-brand p {
-  color: var(--text-white-muted);
+  color: #94A3B8;
   font-size: 0.95rem;
   line-height: 1.7;
   margin: 1.25rem 0 1.5rem;
@@ -1711,24 +1825,26 @@ select {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: var(--bg-dark-elevated);
+  background-color: rgba(255, 255, 255, 0.08);
   color: var(--text-white);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-social-icon:hover {
   background-color: var(--color-accent);
   color: var(--text-white);
   transform: translateY(-3px);
+  border-color: var(--color-accent);
 }
 
 .footer-col-title {
   font-family: var(--font-heading);
   font-size: 1.2rem;
-  color: var(--text-white);
+  color: #FFFFFF;
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
@@ -1739,7 +1855,7 @@ select {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 24px;
+  width: 28px;
   height: 2px;
   background-color: var(--color-accent);
 }
@@ -1751,7 +1867,7 @@ select {
 }
 
 .footer-links-list a {
-  color: var(--text-white-muted);
+  color: #94A3B8;
   font-size: 0.925rem;
   transition: all var(--transition-fast);
   display: inline-flex;
@@ -1760,24 +1876,25 @@ select {
 }
 
 .footer-links-list a:hover {
-  color: var(--color-accent-light);
+  color: #FFFFFF;
   transform: translateX(4px);
 }
 
 .footer-hours-box {
-  background-color: var(--bg-dark-elevated);
+  background-color: rgba(255, 255, 255, 0.04);
   padding: 1.5rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(8px);
 }
 
 .footer-hours-row {
   display: flex;
   justify-content: space-between;
   font-size: 0.85rem;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  color: var(--text-white-muted);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  color: #94A3B8;
 }
 
 .footer-hours-row:last-child {
@@ -1785,7 +1902,7 @@ select {
 }
 
 .footer-hours-row strong {
-  color: var(--text-white);
+  color: #FFFFFF;
 }
 
 /* Mandatory Demo Disclaimer Banner */
@@ -1808,7 +1925,7 @@ select {
 }
 
 .footer-disclaimer-card p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.85rem;
   line-height: 1.6;
   margin: 0;
@@ -1819,9 +1936,19 @@ select {
   align-items: center;
   justify-content: space-between;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
   font-size: 0.875rem;
-  color: var(--text-white-muted);
+  color: #94A3B8;
+}
+
+.footer-bottom a {
+  color: #94A3B8;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom a:hover {
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
@@ -1841,17 +1968,13 @@ select {
   will-change: transform, opacity;
 }
 
-/* Top Scroll Progress Indicator */
+/* Top Scroll Progress Indicator (Disabled per client review) */
 .gsap-scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #1B4332, #2D6A4F, #E07A5F);
-  transform-origin: left center;
-  transform: scaleX(0);
-  z-index: 99999;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none;
 }
 
@@ -2249,7 +2372,7 @@ select {
 
 .checklist-items li {
   padding: 0.5rem 0;
-  border-bottom: 1px dashed var(--border-subtle, rgba(27, 67, 50, 0.08));
+  border-bottom: 1px solid var(--border-subtle, rgba(27, 67, 50, 0.08));
   font-size: 0.9rem;
   color: var(--text-main, #1F2937);
   display: flex;

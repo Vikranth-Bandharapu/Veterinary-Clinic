@@ -54,13 +54,15 @@ img, picture, svg, video {
     gap: 2.5rem;
   }
 
-  .step-journey-grid {
+  .step-journey-grid,
+  .card-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 
-  .step-journey-grid::before {
-    display: none;
+  .step-journey-grid::before,
+  .card-grid::before {
+    display: none !important;
   }
 }
 
@@ -228,6 +230,7 @@ img, picture, svg, video {
   .testimonial-grid,
   .journal-grid,
   .step-journey-grid,
+  .card-grid,
   .responsive-3-col {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -411,6 +414,19 @@ img, picture, svg, video {
 
   .accordion-body {
     padding: 0 1rem 1.15rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.85rem;
+    text-align: center;
+  }
+
+  .footer-bottom div {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
   }
 
   .footer-hours-box {

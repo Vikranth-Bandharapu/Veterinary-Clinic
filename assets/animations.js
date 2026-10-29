@@ -22,29 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   0. Scroll Progress Bar at Window Top
+   0. Scroll Progress Bar at Window Top (Removed per client request)
    -------------------------------------------------------------------------- */
 function initScrollProgressBar(reduced) {
-  if (reduced) return;
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  let bar = document.querySelector('.gsap-scroll-progress');
-  if (!bar) {
-    bar = document.createElement('div');
-    bar.className = 'gsap-scroll-progress';
-    document.body.prepend(bar);
-  }
-
-  gsap.to(bar, {
-    scaleX: 1,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: document.body,
-      start: 'top top',
-      end: 'bottom bottom',
-      scrub: 0.3
-    }
-  });
+  const bar = document.querySelector('.gsap-scroll-progress');
+  if (bar) bar.remove();
 }
 
 /* --------------------------------------------------------------------------
@@ -251,8 +233,9 @@ function initCardGrids() {
     { container: '.service-grid', item: '.service-card' },
     { container: '.testimonial-grid', item: '.testimonial-card' },
     { container: '.journal-grid', item: '.journal-card' },
-    { container: '.step-journey-grid', item: '.step-journey-card, .step-item' },
+    { container: '.step-journey-grid', item: '.step-journey-card, .step-item, .step-card' },
     { container: '.feature-grid', item: '.feature-card, .paw-card' },
+    { container: '.card-grid', item: '.paw-card, .feature-card' },
     { container: '.responsive-3-col', item: '.paw-card' }
   ];
 

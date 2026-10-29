@@ -4,6 +4,11 @@
  * Includes tab switching, dynamic login email display, form validation with 404 redirect, and CTA 404 routing.
  */
 
+// Immediate execution upon script parse to prevent any flash of fallback user email
+try {
+  populateDashboardUserEmail();
+} catch(e) {}
+
 document.addEventListener('DOMContentLoaded', () => {
   initDashboardTabs();
   initSidebarToggle();
@@ -17,22 +22,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* --------------------------------------------------------------------------
    Populate Entered Login Email across Dashboard
+   Always displays the exact email entered on login screen
    -------------------------------------------------------------------------- */
 function populateDashboardUserEmail() {
-  const savedEmail = localStorage.getItem('pawcare_logged_in_email') || 
-                     sessionStorage.getItem('pawcare_logged_in_email');
-  if (!savedEmail) return;
+  let userEmail = '';
 
-  // Update sidebar user email display
+  // 1. Try URL query parameter first: ?email=...
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('email')) {
+      const qEmail = params.get('email');
+      if (qEmail && qEmail.trim()) {
+        userEmail = qEmail.trim();
+      }
+    }
+  } catch(e) {}
+
+  // 2. Fallback to localStorage or sessionStorage
+  if (!userEmail) {
+    try {
+      userEmail = localStorage.getItem('pawcare_logged_in_email') || 
+                  sessionStorage.getItem('pawcare_logged_in_email') || 
+                  localStorage.getItem('pawcare_registered_email') || 
+                  sessionStorage.getItem('pawcare_registered_email') || '';
+    } catch(e) {}
+  }
+
+  if (!userEmail) return;
+
+  // Persist to storage so page refreshes and tab navigations retain the login email
+  try {
+    localStorage.setItem('pawcare_logged_in_email', userEmail);
+    sessionStorage.setItem('pawcare_logged_in_email', userEmail);
+  } catch(e) {}
+
+  // 3. Update all sidebar user email displays
   document.querySelectorAll('.sidebar-user-email, [data-user-email]').forEach(el => {
-    el.textContent = savedEmail;
-    el.setAttribute('title', savedEmail);
+    el.textContent = userEmail;
+    el.setAttribute('title', userEmail);
   });
 
-  // Update settings inputs with user email
+  // 4. Update settings inputs with user email
   document.querySelectorAll('.sidebar-user-email-input, #adminNotificationEmail, #vetNotificationEmail, #vetEmailInput').forEach(input => {
-    input.value = savedEmail;
+    input.value = userEmail;
   });
+
+  // 5. Update user display name if custom email or registered name exists
+  try {
+    const registeredName = localStorage.getItem('pawcare_registered_name') || 
+                           sessionStorage.getItem('pawcare_registered_name');
+    let displayName = '';
+    if (registeredName && registeredName.trim()) {
+      displayName = registeredName.trim();
+    } else if (userEmail.includes('@')) {
+      const localPart = userEmail.split('@')[0];
+      if (localPart && !['admin', 'vet'].includes(localPart.toLowerCase())) {
+        displayName = localPart
+          .split(/[\._\-+]+/)
+          .filter(Boolean)
+          .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+          .join(' ');
+      }
+    }
+
+    if (displayName) {
+      const isVet = (document.body && document.body.classList.contains('theme-vet')) || 
+                    window.location.pathname.includes('vet-dashboard');
+      const finalName = isVet && !displayName.toLowerCase().startsWith('dr.') ? ('Dr. ' + displayName) : displayName;
+      document.querySelectorAll('.sidebar-user-name').forEach(nameEl => {
+        nameEl.textContent = finalName;
+        nameEl.setAttribute('title', finalName);
+      });
+      document.querySelectorAll('.vet-welcome-name').forEach(welcomeEl => {
+        welcomeEl.textContent = finalName;
+      });
+    }
+  } catch(e) {}
 }
 window.populateDashboardUserEmail = populateDashboardUserEmail;
 
@@ -367,14 +432,15 @@ function showDashFieldError(inputEl, msg) {
    -------------------------------------------------------------------------- */
 function initDashboardCTAButtons() {
   document.addEventListener('click', (e) => {
-    // Target any button or link styled as a button in .dash-main, or action buttons
-    const btn = e.target.closest('.dash-main button, .dash-main a.btn, .email-detail-footer button, .dash-table button');
+    // Target any button, input[type="button"], link styled as a button, or stat card in .dash-main
+    const btn = e.target.closest('.dash-main button, .dash-main a.btn, .email-detail-footer button, .dash-table button, .dash-welcome-card button, .dash-stat-card');
     if (!btn) return;
 
     // Exclude navigation tabs, sidebar toggles, logouts, modal close buttons, and form submit buttons
     if (
       btn.hasAttribute('data-tab') ||
       btn.classList.contains('dash-sidebar-toggle') ||
+      btn.classList.contains('dash-sidebar-close') ||
       btn.classList.contains('action-logout') ||
       btn.hasAttribute('data-action') ||
       btn.hasAttribute('data-modal-close') ||
